@@ -14,6 +14,10 @@ namespace HEGII_WHSS
 {
     public partial class formWarehouseMgt : Form
     {
+        DataTable dtWarehouseQuery = new DataTable();
+        SqlConnection con;
+        SqlDataAdapter daWarehouseQuery;
+
         public formWarehouseMgt()
         {
             InitializeComponent();
@@ -26,11 +30,10 @@ namespace HEGII_WHSS
 
         private void buttonQuery_Click(object sender, EventArgs e)
         {
-            DataTable dtWarehouseQuery = new DataTable();
             string consqlserver = ConfigurationManager.ConnectionStrings["HGWHConnectionString"].ToString() + ";Password=" + Global.stringSQLPassword + ";";
-            SqlConnection con = new SqlConnection(consqlserver);
             string sqlWarehouseQuery = getSQLWarehouseQuery();
-            SqlDataAdapter daWarehouseQuery = new SqlDataAdapter(sqlWarehouseQuery, con);
+            con = new SqlConnection(consqlserver);
+            daWarehouseQuery = new SqlDataAdapter(sqlWarehouseQuery, con);
             try
             {
                 daWarehouseQuery.Fill(dtWarehouseQuery);
@@ -50,11 +53,6 @@ namespace HEGII_WHSS
             catch (Exception msg)
             {
                 MessageBox.Show(msg.Message);
-            }
-            finally
-            {
-                con.Close();
-                con.Dispose();
             }
         }
 
@@ -103,13 +101,34 @@ namespace HEGII_WHSS
 
         }
 
-        private void formWerahouseMgt_DoubleClick(object sender, EventArgs e)
+        private void dataGridWerahouse_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridWerahouse.ReadOnly)
             {
                 dataGridWerahouse.ReadOnly = false;
+                dataGridWerahouse.Columns[0].ReadOnly = true;
                 dataGridWerahouse.SelectionMode = DataGridViewSelectionMode.CellSelect;
             }
+        }
+
+        private void buttonChangeSave_Click(object sender, EventArgs e)
+        {
+            if (dataGridWerahouse.ReadOnly)
+            {
+                MessageBox.Show("没有需要更改的内容");
+            }
+            else
+            {
+                daWarehouseQuery.Update(dtWarehouseQuery);
+            }
+        }
+
+        private void formWerahouseMgt_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            dtWarehouseQuery.Dispose();
+            daWarehouseQuery.Dispose();
+            con.Close();
+            con.Dispose();
         }
     }
 }

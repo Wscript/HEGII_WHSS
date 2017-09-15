@@ -135,6 +135,7 @@ namespace HEGII_WHSS
             this.dataGridWerahouse.RowTemplate.Height = 23;
             this.dataGridWerahouse.Size = new System.Drawing.Size(765, 277);
             this.dataGridWerahouse.TabIndex = 1;
+            this.dataGridWerahouse.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridWerahouse_CellDoubleClick);
             // 
             // buttonWarehouseAdd
             // 
@@ -158,6 +159,7 @@ namespace HEGII_WHSS
             this.buttonChangeSave.TabIndex = 16;
             this.buttonChangeSave.Text = "保存修改";
             this.buttonChangeSave.UseVisualStyleBackColor = true;
+            this.buttonChangeSave.Click += new System.EventHandler(this.buttonChangeSave_Click);
             // 
             // formWarehouseMgt
             // 
@@ -172,8 +174,8 @@ namespace HEGII_WHSS
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "formWarehouseMgt";
             this.Text = "仓库管理";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formWerahouseMgt_FormClosing);
             this.Load += new System.EventHandler(this.formWarehouseMgt_Load);
-            this.DoubleClick += new System.EventHandler(this.formWerahouseMgt_DoubleClick);
             this.groupWarehouseQuery.ResumeLayout(false);
             this.groupWarehouseQuery.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridWerahouse)).EndInit();
