@@ -57,6 +57,7 @@
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemOrderQuery = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,7 +83,14 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.menuItemOrderQuery = new System.Windows.Forms.ToolStripMenuItem();
+            this.配件管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.仓库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.货位管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.配件入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.配件出库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.货位调整ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.库间调拨ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.库存盘点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -97,7 +105,8 @@
             this.viewMenu,
             this.toolsMenu,
             this.windowsMenu,
-            this.helpMenu});
+            this.helpMenu,
+            this.配件管理ToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
@@ -301,7 +310,7 @@
             this.toolBarToolStripMenuItem.CheckOnClick = true;
             this.toolBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolBarToolStripMenuItem.Name = "toolBarToolStripMenuItem";
-            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.toolBarToolStripMenuItem.Text = "工具栏(&T)";
             this.toolBarToolStripMenuItem.Click += new System.EventHandler(this.ToolBarToolStripMenuItem_Click);
             // 
@@ -311,7 +320,7 @@
             this.statusBarToolStripMenuItem.CheckOnClick = true;
             this.statusBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.statusBarToolStripMenuItem.Text = "状态栏(&S)";
             this.statusBarToolStripMenuItem.Click += new System.EventHandler(this.StatusBarToolStripMenuItem_Click);
             // 
@@ -329,6 +338,13 @@
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.optionsToolStripMenuItem.Text = "选项(&O)";
+            // 
+            // menuItemOrderQuery
+            // 
+            this.menuItemOrderQuery.Name = "menuItemOrderQuery";
+            this.menuItemOrderQuery.Size = new System.Drawing.Size(167, 26);
+            this.menuItemOrderQuery.Text = "订单查询(&Q)";
+            this.menuItemOrderQuery.Click += new System.EventHandler(this.menuItemOrderQuery_Click);
             // 
             // windowsMenu
             // 
@@ -535,12 +551,61 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 21);
             this.toolStripStatusLabel.Text = "状态";
             // 
-            // menuItemOrderQuery
+            // 配件管理ToolStripMenuItem
             // 
-            this.menuItemOrderQuery.Name = "menuItemOrderQuery";
-            this.menuItemOrderQuery.Size = new System.Drawing.Size(167, 26);
-            this.menuItemOrderQuery.Text = "订单查询(&Q)";
-            this.menuItemOrderQuery.Click += new System.EventHandler(this.menuItemOrderQuery_Click);
+            this.配件管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.仓库管理ToolStripMenuItem,
+            this.货位管理ToolStripMenuItem,
+            this.配件入库ToolStripMenuItem,
+            this.配件出库ToolStripMenuItem,
+            this.货位调整ToolStripMenuItem,
+            this.库间调拨ToolStripMenuItem,
+            this.库存盘点ToolStripMenuItem});
+            this.配件管理ToolStripMenuItem.Name = "配件管理ToolStripMenuItem";
+            this.配件管理ToolStripMenuItem.Size = new System.Drawing.Size(86, 25);
+            this.配件管理ToolStripMenuItem.Text = "配件管理";
+            // 
+            // 仓库管理ToolStripMenuItem
+            // 
+            this.仓库管理ToolStripMenuItem.Name = "仓库管理ToolStripMenuItem";
+            this.仓库管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.仓库管理ToolStripMenuItem.Text = "仓库管理";
+            // 
+            // 货位管理ToolStripMenuItem
+            // 
+            this.货位管理ToolStripMenuItem.Name = "货位管理ToolStripMenuItem";
+            this.货位管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.货位管理ToolStripMenuItem.Text = "货位管理";
+            // 
+            // 配件入库ToolStripMenuItem
+            // 
+            this.配件入库ToolStripMenuItem.Name = "配件入库ToolStripMenuItem";
+            this.配件入库ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.配件入库ToolStripMenuItem.Text = "配件入库";
+            // 
+            // 配件出库ToolStripMenuItem
+            // 
+            this.配件出库ToolStripMenuItem.Name = "配件出库ToolStripMenuItem";
+            this.配件出库ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.配件出库ToolStripMenuItem.Text = "配件出库";
+            // 
+            // 货位调整ToolStripMenuItem
+            // 
+            this.货位调整ToolStripMenuItem.Name = "货位调整ToolStripMenuItem";
+            this.货位调整ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.货位调整ToolStripMenuItem.Text = "货位调整";
+            // 
+            // 库间调拨ToolStripMenuItem
+            // 
+            this.库间调拨ToolStripMenuItem.Name = "库间调拨ToolStripMenuItem";
+            this.库间调拨ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.库间调拨ToolStripMenuItem.Text = "库间调拨";
+            // 
+            // 库存盘点ToolStripMenuItem
+            // 
+            this.库存盘点ToolStripMenuItem.Name = "库存盘点ToolStripMenuItem";
+            this.库存盘点ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.库存盘点ToolStripMenuItem.Text = "库存盘点";
             // 
             // formMDIMain
             // 
@@ -623,6 +688,14 @@
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem menuItemOrderQuery;
+        private System.Windows.Forms.ToolStripMenuItem 配件管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 仓库管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 货位管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 配件入库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 配件出库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 货位调整ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 库间调拨ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 库存盘点ToolStripMenuItem;
     }
 }
 
