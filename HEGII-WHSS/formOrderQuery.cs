@@ -23,13 +23,13 @@ namespace HEGII_WHSS
             try
             {
                 daOrderQuery.Fill(dtOrderQuery);
-                if (dtOrderQuery.Rows.Count>0)
+                if (dtOrderQuery.Rows.Count > 0)
                 {
                     dataGridOrderList.DataSource = dtOrderQuery;
                     dataGridOrderList.ReadOnly = true;
                     dataGridOrderList.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
                     dataGridOrderList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                    //dataGridOrderList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    dataGridOrderList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCellsExceptHeader;
                 }
                 else
                 {
@@ -48,6 +48,8 @@ namespace HEGII_WHSS
 
         private void formOrderQuery_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+
             DataTable dtEngineerList = new DataTable();
             DataTable dtStoreCategory = new DataTable();
             string consqlserver = ConfigurationManager.ConnectionStrings["HGWHConnectionString"].ToString() + ";Password=" + Global.stringSQLPassword + ";";

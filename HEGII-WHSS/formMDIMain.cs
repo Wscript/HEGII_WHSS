@@ -116,5 +116,12 @@ namespace HEGII_WHSS
             formOrderQuery.MdiParent = this;
             formOrderQuery.Show();
         }
+
+        private void MenuItemWarehouseMgt_Click(object sender, EventArgs e)
+        {
+            formWarehouseMgt formWarehouseMgt = new formWarehouseMgt();
+            formWarehouseMgt.MdiParent = this;
+            formWarehouseMgt.Show();
+        }
     }
 }
