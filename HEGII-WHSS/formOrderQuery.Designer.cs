@@ -261,6 +261,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "formOrderQuery";
             this.Text = "订单查询";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formOrderQuery_FormClosing);
             this.Load += new System.EventHandler(this.formOrderQuery_Load);
             this.groupOrderQuery.ResumeLayout(false);
             this.groupOrderQuery.PerformLayout();

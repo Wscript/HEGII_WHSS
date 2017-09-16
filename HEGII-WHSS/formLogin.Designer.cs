@@ -42,14 +42,14 @@
             this.textPassword.Location = new System.Drawing.Point(92, 93);
             this.textPassword.Name = "textPassword";
             this.textPassword.PasswordChar = '*';
-            this.textPassword.Size = new System.Drawing.Size(153, 29);
+            this.textPassword.Size = new System.Drawing.Size(215, 29);
             this.textPassword.TabIndex = 9;
             // 
             // textUsername
             // 
             this.textUsername.Location = new System.Drawing.Point(92, 58);
             this.textUsername.Name = "textUsername";
-            this.textUsername.Size = new System.Drawing.Size(153, 29);
+            this.textUsername.Size = new System.Drawing.Size(215, 29);
             this.textUsername.TabIndex = 8;
             // 
             // labelPassword
@@ -72,7 +72,7 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(170, 128);
+            this.buttonLogin.Location = new System.Drawing.Point(232, 128);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(75, 31);
             this.buttonLogin.TabIndex = 5;
@@ -95,7 +95,7 @@
             this.AcceptButton = this.buttonLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(258, 172);
+            this.ClientSize = new System.Drawing.Size(319, 169);
             this.Controls.Add(this.pictureLogo);
             this.Controls.Add(this.textPassword);
             this.Controls.Add(this.textUsername);
@@ -107,6 +107,7 @@
             this.Name = "formLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户登录";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formLogin_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

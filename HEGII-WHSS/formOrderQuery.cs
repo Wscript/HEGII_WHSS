@@ -8,6 +8,10 @@ namespace HEGII_WHSS
 {
     public partial class formOrderQuery : Form
     {
+        private DataTable dtEngineerList, dtStoreCategory, dtStoreList, dtOrderQuery;
+        private SqlDataAdapter daEngineerList,daStoreCategory, daStoreList, daOrderQuery;
+        private SqlConnection conOrderQuery;
+
         public formOrderQuery()
         {
             InitializeComponent();
@@ -15,21 +19,22 @@ namespace HEGII_WHSS
 
         private void buttonQuery_Click(object sender, EventArgs e)
         {
-            DataTable dtOrderQuery = new DataTable();
-            string consqlserver = ConfigurationManager.ConnectionStrings["HGWHConnectionString"].ToString() + ";Password=" + Global.stringSQLPassword + ";";
-            SqlConnection con = new SqlConnection(consqlserver);
+            dtOrderQuery = new DataTable();
             string sqlOrderQuery = getSQLOrderQuery();
-            SqlDataAdapter daOrderQuery = new SqlDataAdapter(sqlOrderQuery, con);
+            daOrderQuery = new SqlDataAdapter(sqlOrderQuery, conOrderQuery);
+
             try
             {
                 daOrderQuery.Fill(dtOrderQuery);
                 if (dtOrderQuery.Rows.Count > 0)
                 {
                     dataGridOrderList.DataSource = dtOrderQuery;
-                    dataGridOrderList.ReadOnly = true;
                     dataGridOrderList.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
                     dataGridOrderList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                    dataGridOrderList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCellsExceptHeader;
+                    dataGridOrderList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dataGridOrderList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    dataGridOrderList.ReadOnly = true;
+                    dataGridOrderList.AllowUserToAddRows = false;
                 }
                 else
                 {
@@ -40,24 +45,20 @@ namespace HEGII_WHSS
             {
                 MessageBox.Show(msg.Message);
             }
-            finally
-            {
-
-            }
         }
 
         private void formOrderQuery_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
 
-            DataTable dtEngineerList = new DataTable();
-            DataTable dtStoreCategory = new DataTable();
+            dtEngineerList = new DataTable();
+            dtStoreCategory = new DataTable();
             string consqlserver = ConfigurationManager.ConnectionStrings["HGWHConnectionString"].ToString() + ";Password=" + Global.stringSQLPassword + ";";
-            SqlConnection con = new SqlConnection(consqlserver);
+            conOrderQuery = new SqlConnection(consqlserver);
             string sqlEngineerList = "SELECT EngineerName FROM EngineerList";
-            SqlDataAdapter daEngineerList = new SqlDataAdapter(sqlEngineerList, con);
+            daEngineerList = new SqlDataAdapter(sqlEngineerList, conOrderQuery);
             string sqlStoreCategory = "SELECT StoreCategory FROM StoreCategory";
-            SqlDataAdapter daStoreCategory = new SqlDataAdapter(sqlStoreCategory, con);
+            daStoreCategory = new SqlDataAdapter(sqlStoreCategory, conOrderQuery);
 
             try
             {
@@ -82,28 +83,60 @@ namespace HEGII_WHSS
             {
                 MessageBox.Show(msg.Message);
             }
-            finally
+        }
+
+        private void formOrderQuery_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (dtEngineerList != null)
             {
                 dtEngineerList.Dispose();
+            }
+            if (dtStoreCategory != null)
+            {
                 dtStoreCategory.Dispose();
+            }
+            if (dtStoreList != null)
+            {
+                dtStoreList.Dispose();
+            }
+            if (dtOrderQuery != null)
+            {
+                dtOrderQuery.Dispose();
+            }
+
+            if (daEngineerList != null)
+            {
                 daEngineerList.Dispose();
+            }
+            if (daStoreCategory != null)
+            {
                 daStoreCategory.Dispose();
-                con.Close();
-                con.Dispose();
+            }
+            if (daStoreList != null)
+            {
+                daStoreList.Dispose();
+            }
+            if (daOrderQuery != null)
+            {
+                daOrderQuery.Dispose();
+            }
+
+            if (conOrderQuery != null)
+            {
+                conOrderQuery.Close();
+                conOrderQuery.Dispose();
             }
         }
 
         private void comboStoreCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataTable dtStoreList = new DataTable();
-            string consqlserver = ConfigurationManager.ConnectionStrings["HGWHConnectionString"].ToString() + ";Password=" + Global.stringSQLPassword + ";";
-            SqlConnection con = new SqlConnection(consqlserver);
+            dtStoreList = new DataTable();
             string sqlStoreList = "SELECT SalesStoreName " +
                                   "FROM SalesStoreList AS A " +
                                     "LEFT JOIN StoreCategory AS B " +
                                         "ON A.StoreCategoryID = B.ID " +
                                    "WHERE B.StoreCategory = '" + comboStoreCategory.Text + "'";
-            SqlDataAdapter daStoreList = new SqlDataAdapter(sqlStoreList, con);
+            daStoreList = new SqlDataAdapter(sqlStoreList, conOrderQuery);
 
             try
             {
@@ -121,13 +154,6 @@ namespace HEGII_WHSS
             catch (Exception msg)
             {
                 MessageBox.Show(msg.Message);
-            }
-            finally
-            {
-                dtStoreList.Dispose();
-                daStoreList.Dispose();
-                con.Close();
-                con.Dispose();
             }
         }
 

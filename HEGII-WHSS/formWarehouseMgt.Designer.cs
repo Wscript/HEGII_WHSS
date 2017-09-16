@@ -38,11 +38,11 @@ namespace HEGII_WHSS
             this.labelWarehouseCode = new System.Windows.Forms.Label();
             this.textWarehouseName = new System.Windows.Forms.TextBox();
             this.labelWarehouseName = new System.Windows.Forms.Label();
-            this.dataGridWerahouse = new System.Windows.Forms.DataGridView();
+            this.dataGridWarehouse = new System.Windows.Forms.DataGridView();
             this.buttonWarehouseAdd = new System.Windows.Forms.Button();
             this.buttonChangeSave = new System.Windows.Forms.Button();
             this.groupWarehouseQuery.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridWerahouse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridWarehouse)).BeginInit();
             this.SuspendLayout();
             // 
             // groupWarehouseQuery
@@ -123,19 +123,19 @@ namespace HEGII_WHSS
             this.labelWarehouseName.TabIndex = 0;
             this.labelWarehouseName.Text = "仓库名称";
             // 
-            // dataGridWerahouse
+            // dataGridWarehouse
             // 
-            this.dataGridWerahouse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridWarehouse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridWerahouse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridWerahouse.Location = new System.Drawing.Point(14, 210);
-            this.dataGridWerahouse.Margin = new System.Windows.Forms.Padding(5);
-            this.dataGridWerahouse.Name = "dataGridWerahouse";
-            this.dataGridWerahouse.RowTemplate.Height = 23;
-            this.dataGridWerahouse.Size = new System.Drawing.Size(765, 277);
-            this.dataGridWerahouse.TabIndex = 1;
-            this.dataGridWerahouse.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridWerahouse_CellDoubleClick);
+            this.dataGridWarehouse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridWarehouse.Location = new System.Drawing.Point(14, 210);
+            this.dataGridWarehouse.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridWarehouse.Name = "dataGridWarehouse";
+            this.dataGridWarehouse.RowTemplate.Height = 23;
+            this.dataGridWarehouse.Size = new System.Drawing.Size(765, 277);
+            this.dataGridWarehouse.TabIndex = 1;
+            this.dataGridWarehouse.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridWerahouse_CellDoubleClick);
             // 
             // buttonWarehouseAdd
             // 
@@ -167,7 +167,7 @@ namespace HEGII_WHSS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 501);
             this.Controls.Add(this.buttonChangeSave);
-            this.Controls.Add(this.dataGridWerahouse);
+            this.Controls.Add(this.dataGridWarehouse);
             this.Controls.Add(this.buttonWarehouseAdd);
             this.Controls.Add(this.groupWarehouseQuery);
             this.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -178,7 +178,7 @@ namespace HEGII_WHSS
             this.Load += new System.EventHandler(this.formWarehouseMgt_Load);
             this.groupWarehouseQuery.ResumeLayout(false);
             this.groupWarehouseQuery.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridWerahouse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridWarehouse)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -191,7 +191,7 @@ namespace HEGII_WHSS
         private System.Windows.Forms.Label labelWarehouseCode;
         private System.Windows.Forms.TextBox textWarehouseName;
         private System.Windows.Forms.Label labelWarehouseName;
-        private System.Windows.Forms.DataGridView dataGridWerahouse;
+        private System.Windows.Forms.DataGridView dataGridWarehouse;
         private System.Windows.Forms.Button buttonQuery;
         private System.Windows.Forms.Button buttonWarehouseAdd;
         private Button buttonChangeSave;
