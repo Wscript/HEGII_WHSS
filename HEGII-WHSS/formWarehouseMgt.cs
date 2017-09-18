@@ -8,11 +8,12 @@ namespace HEGII_WHSS
 {
     public partial class formWarehouseMgt : Form
     {
-        private DataTable dtWarehouseQuery,dtWarehouseChange;
+        private DataTable dtWarehouseQuery,dtWarehouseChange, dtUsedLocation;
         private SqlConnection conWarehouseMgt;
-        private SqlDataAdapter daWarehouseQuery,daWarehouseChange;
-        int intNewRowIndex = -1, intChangeRowIndex = -1;
-        string sqlWarehouseChange;
+        private SqlDataAdapter daWarehouseQuery,daWarehouseChange, daUsedLocation;
+        private int intNewRowIndex = -1, intChangeRowIndex = -1;
+        private int intIDColumn, intIsAvailableColmun;
+        private string sqlWarehouseChange,sqlUsedLocation;
 
         public formWarehouseMgt()
         {
@@ -22,8 +23,11 @@ namespace HEGII_WHSS
         private void formWarehouseMgt_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+
             buttonChangeSave.Enabled = false;
             buttonWarehouseAdd.Enabled = false;
+            buttonWarehouseDisable.Enabled = false;
+
             string conSQLServer = ConfigurationManager.ConnectionStrings["HGWHConnectionString"].ToString() + ";Password=" + Global.stringSQLPassword + ";";
             conWarehouseMgt = new SqlConnection(conSQLServer);
         }
@@ -44,6 +48,14 @@ namespace HEGII_WHSS
                     for (int i = 0; i < dtWarehouseQuery.Columns.Count; i++)
                     {
                         dataGridWarehouse.Columns[i].Name = dtWarehouseQuery.Columns[i].Caption;
+                        if (dtWarehouseQuery.Columns[i].Caption == "序号")
+                        {
+                            intIDColumn = i;
+                        }
+                        if (dtWarehouseQuery.Columns[i].Caption == "是否可用")
+                        {
+                            intIsAvailableColmun = i;
+                        }
                     }
                     for (int i = 0; i < dtWarehouseQuery.Rows.Count; i++)
                     {
@@ -57,8 +69,10 @@ namespace HEGII_WHSS
                     dataGridWarehouse.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     dataGridWarehouse.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                     dataGridWarehouse.AllowUserToAddRows = false;
+
                     buttonChangeSave.Enabled = true;
                     buttonWarehouseAdd.Enabled = true;
+                    buttonWarehouseDisable.Enabled = true;
                 }
                 else
                 {
@@ -71,66 +85,22 @@ namespace HEGII_WHSS
             }
         }
 
-        private string getSQLWarehouseQuery()
-        {
-            string sqlWarehouseQuery = "EXEC progWarehouseQuery ";
-            if (textWarehouseName.Text == "")
-            {
-                sqlWarehouseQuery = sqlWarehouseQuery + "NULL";
-            }
-            else
-            {
-                sqlWarehouseQuery = sqlWarehouseQuery + "'" + textWarehouseName.Text + "'";
-            }
-            if (textWarehouseCode.Text == "")
-            {
-                sqlWarehouseQuery = sqlWarehouseQuery + ",NULL";
-            }
-            else
-            {
-                sqlWarehouseQuery = sqlWarehouseQuery + ",'" + textWarehouseCode.Text + "'";
-            }
-            if (checkIsAvailable.Checked)
-            {
-                sqlWarehouseQuery = sqlWarehouseQuery + ",0";
-            }
-            else
-            {
-                sqlWarehouseQuery = sqlWarehouseQuery + ",1";
-            }
-
-            return sqlWarehouseQuery;
-        }
-
         private void buttonWarehouseAdd_Click(object sender, EventArgs e)
         {
             if (intNewRowIndex == -1 & intChangeRowIndex == -1)
             {
                 intNewRowIndex = dataGridWarehouse.Rows.Add();
                 dataGridWarehouse.ReadOnly = false;
-                dataGridWarehouse.Columns[0].ReadOnly = true;
+                dataGridWarehouse.Columns[intIDColumn].ReadOnly = true;
+                dataGridWarehouse.Columns[intIsAvailableColmun].ReadOnly = true;
                 dataGridWarehouse.SelectionMode = DataGridViewSelectionMode.CellSelect;
+                dataGridWarehouse.Rows[intNewRowIndex].Cells[intIsAvailableColmun].Value = "是";
             }
             else
             {
-                MessageBox.Show("当前的修改尚未保存，无法新增！");
+                MessageBox.Show("当前的修改尚未保存，无法新增仓库！");
             }
 
-        }
-
-        private void dataGridWerahouse_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (intNewRowIndex == -1)
-            {
-                if (intChangeRowIndex == -1)
-                {
-                    dataGridWarehouse.ReadOnly = false;
-                    dataGridWarehouse.Columns[0].ReadOnly = true;
-                    dataGridWarehouse.SelectionMode = DataGridViewSelectionMode.CellSelect;
-                    intChangeRowIndex = e.RowIndex;
-                }
-            }
-            
         }
 
         private void buttonChangeSave_Click(object sender, EventArgs e)
@@ -170,6 +140,72 @@ namespace HEGII_WHSS
             }
         }
 
+        private void buttonWarehouseDisable_Click(object sender, EventArgs e)
+        {
+            if (intNewRowIndex == -1 & intChangeRowIndex == -1)
+            {
+                if (dataGridWarehouse.SelectedRows.Count > 0)
+                {
+                    dtUsedLocation = new DataTable();
+                    for (int i = 0; i < dataGridWarehouse.SelectedRows.Count; i++)
+                    {
+                        sqlUsedLocation = "EXEC progGetUsedLocation " + dataGridWarehouse.SelectedRows[i].Cells[intIDColumn].Value.ToString();
+                        daUsedLocation = new SqlDataAdapter(sqlUsedLocation,conWarehouseMgt);
+                        try
+                        {
+                            daUsedLocation.Fill(dtUsedLocation);
+                            if (dtUsedLocation.Rows.Count >0)
+                            {
+                                MessageBox.Show("仓库还有" + dtUsedLocation.Rows.Count.ToString() +"个型号的产品没有清空，请清空后再禁用！");
+                            }
+                            else
+                            {
+                                if (dataGridWarehouse.SelectedRows[i].Cells[intIsAvailableColmun].Value.ToString() == "是")
+                                {
+                                    dataGridWarehouse.SelectedRows[i].Cells[intIsAvailableColmun].Value = "否";
+                                }
+                                else
+                                {
+                                    dataGridWarehouse.SelectedRows[i].Cells[intIsAvailableColmun].Value = "是";
+                                }
+
+                            }
+                        }
+                        catch (Exception msg)
+                        {
+                            MessageBox.Show(msg.Message);
+                        }
+                        finally
+                        {
+                            sqlUsedLocation = null;
+                            daUsedLocation = null;
+                            dtUsedLocation.Rows.Clear();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("没有选择需要禁用的仓库!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("当前的修改尚未保存，无法禁用仓库！");
+            }
+        }
+
+        private void dataGridWerahouse_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (intNewRowIndex == -1 & intChangeRowIndex == -1)
+            {
+                dataGridWarehouse.ReadOnly = false;
+                dataGridWarehouse.Columns[intIDColumn].ReadOnly = true;
+                dataGridWarehouse.Columns[intIsAvailableColmun].ReadOnly = true;
+                dataGridWarehouse.SelectionMode = DataGridViewSelectionMode.CellSelect;
+                intChangeRowIndex = e.RowIndex;
+            }
+        }
+
         private void formWerahouseMgt_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (dtWarehouseQuery != null)
@@ -185,6 +221,37 @@ namespace HEGII_WHSS
                 conWarehouseMgt.Close();
                 conWarehouseMgt.Dispose();
             }
+        }
+
+        private string getSQLWarehouseQuery()
+        {
+            string sqlWarehouseQuery = "EXEC progWarehouseQuery ";
+            if (textWarehouseName.Text == "")
+            {
+                sqlWarehouseQuery = sqlWarehouseQuery + "NULL";
+            }
+            else
+            {
+                sqlWarehouseQuery = sqlWarehouseQuery + "'" + textWarehouseName.Text + "'";
+            }
+            if (textWarehouseCode.Text == "")
+            {
+                sqlWarehouseQuery = sqlWarehouseQuery + ",NULL";
+            }
+            else
+            {
+                sqlWarehouseQuery = sqlWarehouseQuery + ",'" + textWarehouseCode.Text + "'";
+            }
+            if (checkIsAvailable.Checked)
+            {
+                sqlWarehouseQuery = sqlWarehouseQuery + ",0";
+            }
+            else
+            {
+                sqlWarehouseQuery = sqlWarehouseQuery + ",1";
+            }
+
+            return sqlWarehouseQuery;
         }
 
         private string getSQLInsert()

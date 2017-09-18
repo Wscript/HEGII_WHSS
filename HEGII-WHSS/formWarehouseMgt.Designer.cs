@@ -41,6 +41,7 @@ namespace HEGII_WHSS
             this.dataGridWarehouse = new System.Windows.Forms.DataGridView();
             this.buttonWarehouseAdd = new System.Windows.Forms.Button();
             this.buttonChangeSave = new System.Windows.Forms.Button();
+            this.buttonWarehouseDisable = new System.Windows.Forms.Button();
             this.groupWarehouseQuery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridWarehouse)).BeginInit();
             this.SuspendLayout();
@@ -140,7 +141,7 @@ namespace HEGII_WHSS
             // buttonWarehouseAdd
             // 
             this.buttonWarehouseAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonWarehouseAdd.Location = new System.Drawing.Point(222, 160);
+            this.buttonWarehouseAdd.Location = new System.Drawing.Point(94, 160);
             this.buttonWarehouseAdd.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.buttonWarehouseAdd.Name = "buttonWarehouseAdd";
             this.buttonWarehouseAdd.Size = new System.Drawing.Size(93, 35);
@@ -152,7 +153,7 @@ namespace HEGII_WHSS
             // buttonChangeSave
             // 
             this.buttonChangeSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonChangeSave.Location = new System.Drawing.Point(478, 160);
+            this.buttonChangeSave.Location = new System.Drawing.Point(350, 160);
             this.buttonChangeSave.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.buttonChangeSave.Name = "buttonChangeSave";
             this.buttonChangeSave.Size = new System.Drawing.Size(93, 35);
@@ -161,11 +162,24 @@ namespace HEGII_WHSS
             this.buttonChangeSave.UseVisualStyleBackColor = true;
             this.buttonChangeSave.Click += new System.EventHandler(this.buttonChangeSave_Click);
             // 
+            // buttonWarehouseDisable
+            // 
+            this.buttonWarehouseDisable.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonWarehouseDisable.Location = new System.Drawing.Point(606, 160);
+            this.buttonWarehouseDisable.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
+            this.buttonWarehouseDisable.Name = "buttonWarehouseDisable";
+            this.buttonWarehouseDisable.Size = new System.Drawing.Size(93, 35);
+            this.buttonWarehouseDisable.TabIndex = 17;
+            this.buttonWarehouseDisable.Text = "禁用启用";
+            this.buttonWarehouseDisable.UseVisualStyleBackColor = true;
+            this.buttonWarehouseDisable.Click += new System.EventHandler(this.buttonWarehouseDisable_Click);
+            // 
             // formWarehouseMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 501);
+            this.Controls.Add(this.buttonWarehouseDisable);
             this.Controls.Add(this.buttonChangeSave);
             this.Controls.Add(this.dataGridWarehouse);
             this.Controls.Add(this.buttonWarehouseAdd);
@@ -195,5 +209,6 @@ namespace HEGII_WHSS
         private System.Windows.Forms.Button buttonQuery;
         private System.Windows.Forms.Button buttonWarehouseAdd;
         private Button buttonChangeSave;
+        private Button buttonWarehouseDisable;
     }
 }
