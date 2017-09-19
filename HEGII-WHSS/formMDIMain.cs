@@ -123,5 +123,12 @@ namespace HEGII_WHSS
             formWarehouseMgt.MdiParent = this;
             formWarehouseMgt.Show();
         }
+
+        private void MenuItemLocationMgt_Click(object sender, EventArgs e)
+        {
+            formLocationMgt formLocationMgt = new formLocationMgt();
+            formLocationMgt.MdiParent = this;
+            formLocationMgt.Show();
+        }
     }
 }

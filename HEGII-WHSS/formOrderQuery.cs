@@ -53,8 +53,8 @@ namespace HEGII_WHSS
 
             dtEngineerList = new DataTable();
             dtStoreCategory = new DataTable();
-            string consqlserver = ConfigurationManager.ConnectionStrings["HGWHConnectionString"].ToString() + ";Password=" + Global.stringSQLPassword + ";";
-            conOrderQuery = new SqlConnection(consqlserver);
+            string conSQLServer = ConfigurationManager.ConnectionStrings["HGWHConnectionString"].ToString() + ";Password=" + Global.stringSQLPassword + ";";
+            conOrderQuery = new SqlConnection(conSQLServer);
             string sqlEngineerList = "SELECT EngineerName FROM EngineerList";
             daEngineerList = new SqlDataAdapter(sqlEngineerList, conOrderQuery);
             string sqlStoreCategory = "SELECT StoreCategory FROM StoreCategory";

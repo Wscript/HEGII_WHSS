@@ -168,7 +168,8 @@ namespace HEGII_WHSS
                                 {
                                     dataGridWarehouse.SelectedRows[i].Cells[intIsAvailableColmun].Value = "是";
                                 }
-
+                                intChangeRowIndex = dataGridWarehouse.SelectedRows[i].Index;
+                                buttonChangeSave.PerformClick();
                             }
                         }
                         catch (Exception msg)
