@@ -29,37 +29,37 @@
         private void InitializeComponent()
         {
             this.groupLocationQuery = new System.Windows.Forms.GroupBox();
+            this.comboWarehouseName1 = new System.Windows.Forms.ComboBox();
             this.buttonQuery = new System.Windows.Forms.Button();
             this.textLocationCode = new System.Windows.Forms.TextBox();
             this.labelLocationCode = new System.Windows.Forms.Label();
             this.labelWarehouseName = new System.Windows.Forms.Label();
             this.groupLocationChange = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboWarehouseName1 = new System.Windows.Forms.ComboBox();
-            this.comboWarehouseName2 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonLocationAdd = new System.Windows.Forms.Button();
-            this.buttonLocationDelete = new System.Windows.Forms.Button();
-            this.comboRack1Start = new System.Windows.Forms.ComboBox();
-            this.comboRack1End = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboRack2End = new System.Windows.Forms.ComboBox();
-            this.comboRack2Start = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboLocation1End = new System.Windows.Forms.ComboBox();
-            this.comboLocation1Start = new System.Windows.Forms.ComboBox();
+            this.labelEndLocation = new System.Windows.Forms.Label();
+            this.labelStartLocation = new System.Windows.Forms.Label();
+            this.labelEndLocationLabel = new System.Windows.Forms.Label();
+            this.labelStartLocationLabel = new System.Windows.Forms.Label();
+            this.labelLocation2 = new System.Windows.Forms.Label();
+            this.labelLocation1 = new System.Windows.Forms.Label();
+            this.labelRack2 = new System.Windows.Forms.Label();
+            this.labelRack1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboLocation2End = new System.Windows.Forms.ComboBox();
             this.comboLocation2Start = new System.Windows.Forms.ComboBox();
-            this.labelRack1 = new System.Windows.Forms.Label();
-            this.labelRack2 = new System.Windows.Forms.Label();
-            this.labelLocation1 = new System.Windows.Forms.Label();
-            this.labelLocation2 = new System.Windows.Forms.Label();
-            this.labelStartLocationLabel = new System.Windows.Forms.Label();
-            this.labelEndLocationLabel = new System.Windows.Forms.Label();
-            this.labelStartLocation = new System.Windows.Forms.Label();
-            this.labelEndLocation = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboLocation1End = new System.Windows.Forms.ComboBox();
+            this.comboLocation1Start = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboRack2End = new System.Windows.Forms.ComboBox();
+            this.comboRack2Start = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboRack1End = new System.Windows.Forms.ComboBox();
+            this.comboRack1Start = new System.Windows.Forms.ComboBox();
+            this.buttonLocationDelete = new System.Windows.Forms.Button();
+            this.buttonLocationAdd = new System.Windows.Forms.Button();
+            this.comboWarehouseName2 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupLocationQuery.SuspendLayout();
             this.groupLocationChange.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -82,6 +82,15 @@
             this.groupLocationQuery.TabIndex = 1;
             this.groupLocationQuery.TabStop = false;
             this.groupLocationQuery.Text = "仓库查询";
+            // 
+            // comboWarehouseName1
+            // 
+            this.comboWarehouseName1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboWarehouseName1.FormattingEnabled = true;
+            this.comboWarehouseName1.Location = new System.Drawing.Point(98, 30);
+            this.comboWarehouseName1.Name = "comboWarehouseName1";
+            this.comboWarehouseName1.Size = new System.Drawing.Size(214, 29);
+            this.comboWarehouseName1.TabIndex = 17;
             // 
             // buttonQuery
             // 
@@ -157,168 +166,102 @@
             this.groupLocationChange.TabStop = false;
             this.groupLocationChange.Text = "货位增加/删除";
             // 
-            // dataGridView1
+            // labelEndLocation
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 103);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(779, 305);
-            this.dataGridView1.TabIndex = 3;
+            this.labelEndLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelEndLocation.AutoSize = true;
+            this.labelEndLocation.Location = new System.Drawing.Point(551, 107);
+            this.labelEndLocation.Name = "labelEndLocation";
+            this.labelEndLocation.Size = new System.Drawing.Size(74, 21);
+            this.labelEndLocation.TabIndex = 42;
+            this.labelEndLocation.Text = "起始货位";
             // 
-            // comboWarehouseName1
+            // labelStartLocation
             // 
-            this.comboWarehouseName1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboWarehouseName1.FormattingEnabled = true;
-            this.comboWarehouseName1.Location = new System.Drawing.Point(98, 30);
-            this.comboWarehouseName1.Name = "comboWarehouseName1";
-            this.comboWarehouseName1.Size = new System.Drawing.Size(214, 29);
-            this.comboWarehouseName1.TabIndex = 17;
+            this.labelStartLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelStartLocation.AutoSize = true;
+            this.labelStartLocation.Location = new System.Drawing.Point(551, 70);
+            this.labelStartLocation.Name = "labelStartLocation";
+            this.labelStartLocation.Size = new System.Drawing.Size(74, 21);
+            this.labelStartLocation.TabIndex = 41;
+            this.labelStartLocation.Text = "起始货位";
             // 
-            // comboWarehouseName2
+            // labelEndLocationLabel
             // 
-            this.comboWarehouseName2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboWarehouseName2.FormattingEnabled = true;
-            this.comboWarehouseName2.Location = new System.Drawing.Point(95, 30);
-            this.comboWarehouseName2.Name = "comboWarehouseName2";
-            this.comboWarehouseName2.Size = new System.Drawing.Size(214, 29);
-            this.comboWarehouseName2.TabIndex = 19;
-            this.comboWarehouseName2.SelectedIndexChanged += new System.EventHandler(this.comboWarehouseName2_SelectedIndexChanged);
+            this.labelEndLocationLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelEndLocationLabel.AutoSize = true;
+            this.labelEndLocationLabel.Location = new System.Drawing.Point(471, 107);
+            this.labelEndLocationLabel.Name = "labelEndLocationLabel";
+            this.labelEndLocationLabel.Size = new System.Drawing.Size(74, 21);
+            this.labelEndLocationLabel.TabIndex = 40;
+            this.labelEndLocationLabel.Text = "结束货位";
             // 
-            // label1
+            // labelStartLocationLabel
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 21);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "仓库名称";
+            this.labelStartLocationLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelStartLocationLabel.AutoSize = true;
+            this.labelStartLocationLabel.Location = new System.Drawing.Point(471, 70);
+            this.labelStartLocationLabel.Name = "labelStartLocationLabel";
+            this.labelStartLocationLabel.Size = new System.Drawing.Size(74, 21);
+            this.labelStartLocationLabel.TabIndex = 39;
+            this.labelStartLocationLabel.Text = "起始货位";
             // 
-            // buttonLocationAdd
+            // labelLocation2
             // 
-            this.buttonLocationAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonLocationAdd.Location = new System.Drawing.Point(675, 56);
-            this.buttonLocationAdd.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
-            this.buttonLocationAdd.Name = "buttonLocationAdd";
-            this.buttonLocationAdd.Size = new System.Drawing.Size(93, 35);
-            this.buttonLocationAdd.TabIndex = 21;
-            this.buttonLocationAdd.Text = "货位增加";
-            this.buttonLocationAdd.UseVisualStyleBackColor = true;
+            this.labelLocation2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelLocation2.AutoSize = true;
+            this.labelLocation2.Location = new System.Drawing.Point(242, 107);
+            this.labelLocation2.Name = "labelLocation2";
+            this.labelLocation2.Size = new System.Drawing.Size(67, 21);
+            this.labelLocation2.TabIndex = 38;
+            this.labelLocation2.Text = "货位号2";
             // 
-            // buttonLocationDelete
+            // labelLocation1
             // 
-            this.buttonLocationDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonLocationDelete.Location = new System.Drawing.Point(675, 100);
-            this.buttonLocationDelete.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
-            this.buttonLocationDelete.Name = "buttonLocationDelete";
-            this.buttonLocationDelete.Size = new System.Drawing.Size(93, 35);
-            this.buttonLocationDelete.TabIndex = 22;
-            this.buttonLocationDelete.Text = "货位删除";
-            this.buttonLocationDelete.UseVisualStyleBackColor = true;
+            this.labelLocation1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelLocation1.AutoSize = true;
+            this.labelLocation1.Location = new System.Drawing.Point(15, 107);
+            this.labelLocation1.Name = "labelLocation1";
+            this.labelLocation1.Size = new System.Drawing.Size(67, 21);
+            this.labelLocation1.TabIndex = 37;
+            this.labelLocation1.Text = "货位号1";
             // 
-            // comboRack1Start
+            // labelRack2
             // 
-            this.comboRack1Start.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboRack1Start.FormattingEnabled = true;
-            this.comboRack1Start.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z"});
-            this.comboRack1Start.Location = new System.Drawing.Point(95, 66);
-            this.comboRack1Start.Name = "comboRack1Start";
-            this.comboRack1Start.Size = new System.Drawing.Size(43, 29);
-            this.comboRack1Start.TabIndex = 23;
+            this.labelRack2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelRack2.AutoSize = true;
+            this.labelRack2.Location = new System.Drawing.Point(243, 70);
+            this.labelRack2.Name = "labelRack2";
+            this.labelRack2.Size = new System.Drawing.Size(67, 21);
+            this.labelRack2.TabIndex = 36;
+            this.labelRack2.Text = "货架号2";
             // 
-            // comboRack1End
+            // labelRack1
             // 
-            this.comboRack1End.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboRack1End.FormattingEnabled = true;
-            this.comboRack1End.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z"});
-            this.comboRack1End.Location = new System.Drawing.Point(167, 66);
-            this.comboRack1End.Name = "comboRack1End";
-            this.comboRack1End.Size = new System.Drawing.Size(43, 29);
-            this.comboRack1End.TabIndex = 24;
+            this.labelRack1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelRack1.AutoSize = true;
+            this.labelRack1.Location = new System.Drawing.Point(15, 70);
+            this.labelRack1.Name = "labelRack1";
+            this.labelRack1.Size = new System.Drawing.Size(67, 21);
+            this.labelRack1.TabIndex = 35;
+            this.labelRack1.Text = "货架号1";
             // 
-            // label2
+            // label5
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(144, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 21);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "-";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(369, 107);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 21);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "-";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // comboLocation2End
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(369, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 21);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "-";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboRack2End
-            // 
-            this.comboRack2End.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboRack2End.FormattingEnabled = true;
-            this.comboRack2End.Items.AddRange(new object[] {
+            this.comboLocation2End.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboLocation2End.FormattingEnabled = true;
+            this.comboLocation2End.Items.AddRange(new object[] {
             "0",
             "1",
             "2",
@@ -329,16 +272,16 @@
             "7",
             "8",
             "9"});
-            this.comboRack2End.Location = new System.Drawing.Point(392, 66);
-            this.comboRack2End.Name = "comboRack2End";
-            this.comboRack2End.Size = new System.Drawing.Size(43, 29);
-            this.comboRack2End.TabIndex = 27;
+            this.comboLocation2End.Location = new System.Drawing.Point(392, 103);
+            this.comboLocation2End.Name = "comboLocation2End";
+            this.comboLocation2End.Size = new System.Drawing.Size(43, 29);
+            this.comboLocation2End.TabIndex = 33;
             // 
-            // comboRack2Start
+            // comboLocation2Start
             // 
-            this.comboRack2Start.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboRack2Start.FormattingEnabled = true;
-            this.comboRack2Start.Items.AddRange(new object[] {
+            this.comboLocation2Start.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboLocation2Start.FormattingEnabled = true;
+            this.comboLocation2Start.Items.AddRange(new object[] {
             "0",
             "1",
             "2",
@@ -349,10 +292,10 @@
             "7",
             "8",
             "9"});
-            this.comboRack2Start.Location = new System.Drawing.Point(320, 66);
-            this.comboRack2Start.Name = "comboRack2Start";
-            this.comboRack2Start.Size = new System.Drawing.Size(43, 29);
-            this.comboRack2Start.TabIndex = 26;
+            this.comboLocation2Start.Location = new System.Drawing.Point(320, 103);
+            this.comboLocation2Start.Name = "comboLocation2Start";
+            this.comboLocation2Start.Size = new System.Drawing.Size(43, 29);
+            this.comboLocation2Start.TabIndex = 32;
             // 
             // label4
             // 
@@ -437,22 +380,22 @@
             this.comboLocation1Start.Size = new System.Drawing.Size(43, 29);
             this.comboLocation1Start.TabIndex = 29;
             // 
-            // label5
+            // label3
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(369, 107);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 21);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "-";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(369, 70);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 21);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "-";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboLocation2End
+            // comboRack2End
             // 
-            this.comboLocation2End.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboLocation2End.FormattingEnabled = true;
-            this.comboLocation2End.Items.AddRange(new object[] {
+            this.comboRack2End.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboRack2End.FormattingEnabled = true;
+            this.comboRack2End.Items.AddRange(new object[] {
             "0",
             "1",
             "2",
@@ -463,16 +406,17 @@
             "7",
             "8",
             "9"});
-            this.comboLocation2End.Location = new System.Drawing.Point(392, 103);
-            this.comboLocation2End.Name = "comboLocation2End";
-            this.comboLocation2End.Size = new System.Drawing.Size(43, 29);
-            this.comboLocation2End.TabIndex = 33;
+            this.comboRack2End.Location = new System.Drawing.Point(392, 66);
+            this.comboRack2End.Name = "comboRack2End";
+            this.comboRack2End.Size = new System.Drawing.Size(43, 29);
+            this.comboRack2End.TabIndex = 27;
+            this.comboRack2End.SelectedIndexChanged += new System.EventHandler(this.comboRack2End_SelectedIndexChanged);
             // 
-            // comboLocation2Start
+            // comboRack2Start
             // 
-            this.comboLocation2Start.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboLocation2Start.FormattingEnabled = true;
-            this.comboLocation2Start.Items.AddRange(new object[] {
+            this.comboRack2Start.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboRack2Start.FormattingEnabled = true;
+            this.comboRack2Start.Items.AddRange(new object[] {
             "0",
             "1",
             "2",
@@ -483,90 +427,150 @@
             "7",
             "8",
             "9"});
-            this.comboLocation2Start.Location = new System.Drawing.Point(320, 103);
-            this.comboLocation2Start.Name = "comboLocation2Start";
-            this.comboLocation2Start.Size = new System.Drawing.Size(43, 29);
-            this.comboLocation2Start.TabIndex = 32;
+            this.comboRack2Start.Location = new System.Drawing.Point(320, 66);
+            this.comboRack2Start.Name = "comboRack2Start";
+            this.comboRack2Start.Size = new System.Drawing.Size(43, 29);
+            this.comboRack2Start.TabIndex = 26;
+            this.comboRack2Start.SelectedIndexChanged += new System.EventHandler(this.comboRack2Start_SelectedIndexChanged);
             // 
-            // labelRack1
+            // label2
             // 
-            this.labelRack1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelRack1.AutoSize = true;
-            this.labelRack1.Location = new System.Drawing.Point(15, 70);
-            this.labelRack1.Name = "labelRack1";
-            this.labelRack1.Size = new System.Drawing.Size(67, 21);
-            this.labelRack1.TabIndex = 35;
-            this.labelRack1.Text = "货架号1";
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(144, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 21);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "-";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelRack2
+            // comboRack1End
             // 
-            this.labelRack2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelRack2.AutoSize = true;
-            this.labelRack2.Location = new System.Drawing.Point(243, 70);
-            this.labelRack2.Name = "labelRack2";
-            this.labelRack2.Size = new System.Drawing.Size(67, 21);
-            this.labelRack2.TabIndex = 36;
-            this.labelRack2.Text = "货架号2";
+            this.comboRack1End.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboRack1End.FormattingEnabled = true;
+            this.comboRack1End.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z"});
+            this.comboRack1End.Location = new System.Drawing.Point(167, 66);
+            this.comboRack1End.Name = "comboRack1End";
+            this.comboRack1End.Size = new System.Drawing.Size(43, 29);
+            this.comboRack1End.TabIndex = 24;
+            this.comboRack1End.SelectedIndexChanged += new System.EventHandler(this.comboRack1End_SelectedIndexChanged);
             // 
-            // labelLocation1
+            // comboRack1Start
             // 
-            this.labelLocation1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelLocation1.AutoSize = true;
-            this.labelLocation1.Location = new System.Drawing.Point(15, 107);
-            this.labelLocation1.Name = "labelLocation1";
-            this.labelLocation1.Size = new System.Drawing.Size(67, 21);
-            this.labelLocation1.TabIndex = 37;
-            this.labelLocation1.Text = "货位号1";
+            this.comboRack1Start.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboRack1Start.FormattingEnabled = true;
+            this.comboRack1Start.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z"});
+            this.comboRack1Start.Location = new System.Drawing.Point(95, 66);
+            this.comboRack1Start.Name = "comboRack1Start";
+            this.comboRack1Start.Size = new System.Drawing.Size(43, 29);
+            this.comboRack1Start.TabIndex = 23;
+            this.comboRack1Start.SelectedIndexChanged += new System.EventHandler(this.comboRack1Start_SelectedIndexChanged);
             // 
-            // labelLocation2
+            // buttonLocationDelete
             // 
-            this.labelLocation2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelLocation2.AutoSize = true;
-            this.labelLocation2.Location = new System.Drawing.Point(242, 107);
-            this.labelLocation2.Name = "labelLocation2";
-            this.labelLocation2.Size = new System.Drawing.Size(67, 21);
-            this.labelLocation2.TabIndex = 38;
-            this.labelLocation2.Text = "货位号2";
+            this.buttonLocationDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonLocationDelete.Location = new System.Drawing.Point(675, 100);
+            this.buttonLocationDelete.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
+            this.buttonLocationDelete.Name = "buttonLocationDelete";
+            this.buttonLocationDelete.Size = new System.Drawing.Size(93, 35);
+            this.buttonLocationDelete.TabIndex = 22;
+            this.buttonLocationDelete.Text = "货位删除";
+            this.buttonLocationDelete.UseVisualStyleBackColor = true;
             // 
-            // labelStartLocationLabel
+            // buttonLocationAdd
             // 
-            this.labelStartLocationLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelStartLocationLabel.AutoSize = true;
-            this.labelStartLocationLabel.Location = new System.Drawing.Point(471, 70);
-            this.labelStartLocationLabel.Name = "labelStartLocationLabel";
-            this.labelStartLocationLabel.Size = new System.Drawing.Size(74, 21);
-            this.labelStartLocationLabel.TabIndex = 39;
-            this.labelStartLocationLabel.Text = "起始货位";
+            this.buttonLocationAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonLocationAdd.Location = new System.Drawing.Point(675, 56);
+            this.buttonLocationAdd.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
+            this.buttonLocationAdd.Name = "buttonLocationAdd";
+            this.buttonLocationAdd.Size = new System.Drawing.Size(93, 35);
+            this.buttonLocationAdd.TabIndex = 21;
+            this.buttonLocationAdd.Text = "货位增加";
+            this.buttonLocationAdd.UseVisualStyleBackColor = true;
             // 
-            // labelEndLocationLabel
+            // comboWarehouseName2
             // 
-            this.labelEndLocationLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelEndLocationLabel.AutoSize = true;
-            this.labelEndLocationLabel.Location = new System.Drawing.Point(471, 107);
-            this.labelEndLocationLabel.Name = "labelEndLocationLabel";
-            this.labelEndLocationLabel.Size = new System.Drawing.Size(74, 21);
-            this.labelEndLocationLabel.TabIndex = 40;
-            this.labelEndLocationLabel.Text = "结束货位";
+            this.comboWarehouseName2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboWarehouseName2.FormattingEnabled = true;
+            this.comboWarehouseName2.Location = new System.Drawing.Point(95, 30);
+            this.comboWarehouseName2.Name = "comboWarehouseName2";
+            this.comboWarehouseName2.Size = new System.Drawing.Size(214, 29);
+            this.comboWarehouseName2.TabIndex = 19;
+            this.comboWarehouseName2.SelectedIndexChanged += new System.EventHandler(this.comboWarehouseName2_SelectedIndexChanged);
             // 
-            // labelStartLocation
+            // label1
             // 
-            this.labelStartLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelStartLocation.AutoSize = true;
-            this.labelStartLocation.Location = new System.Drawing.Point(551, 70);
-            this.labelStartLocation.Name = "labelStartLocation";
-            this.labelStartLocation.Size = new System.Drawing.Size(74, 21);
-            this.labelStartLocation.TabIndex = 41;
-            this.labelStartLocation.Text = "起始货位";
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 21);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "仓库名称";
             // 
-            // labelEndLocation
+            // dataGridView1
             // 
-            this.labelEndLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelEndLocation.AutoSize = true;
-            this.labelEndLocation.Location = new System.Drawing.Point(551, 107);
-            this.labelEndLocation.Name = "labelEndLocation";
-            this.labelEndLocation.Size = new System.Drawing.Size(74, 21);
-            this.labelEndLocation.TabIndex = 42;
-            this.labelEndLocation.Text = "起始货位";
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(16, 103);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(779, 305);
+            this.dataGridView1.TabIndex = 3;
             // 
             // formLocationMgt
             // 
@@ -577,7 +581,7 @@
             this.Controls.Add(this.groupLocationChange);
             this.Controls.Add(this.groupLocationQuery);
             this.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "formLocationMgt";
             this.Text = "货位管理";
             this.Load += new System.EventHandler(this.formLocationMgt_Load);

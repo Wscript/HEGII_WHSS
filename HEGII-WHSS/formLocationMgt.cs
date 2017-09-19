@@ -44,33 +44,63 @@ namespace HEGII_WHSS
             }
         }
 
+        private void comboRack1Start_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LocationChange();
+        }
+
+        private void comboRack1End_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LocationChange();
+        }
+
+        private void comboRack2Start_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LocationChange();
+        }
+
+        private void comboRack2End_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LocationChange();
+        }
+
         private void LocationChange()
         {
             dtWHStartCode = new DataTable();
-            if (comboLocation1Start.Text == "")
-            {
-                labelStartLocation.Text = labelStartLocation.Text + "- ";
-            }
-            else
-            {
-                labelStartLocation.Text = labelStartLocation.Text + "-" + comboLocation1Start.Text;
-            }
+
             if (comboRack1Start.Text == "")
             {
-                labelStartLocation.Text = "";
+                labelStartLocation.Text = " ";
             }
             else
             {
                 labelStartLocation.Text = comboRack1Start.Text;
             }
-            if (comboRack2Start.Text == "")
+            if (comboRack1End.Text == "")
             {
-                labelStartLocation.Text = labelStartLocation.Text + "";
+                labelStartLocation.Text = labelStartLocation.Text + " ";
             }
             else
             {
-                labelStartLocation.Text = comboRack2Start.Text;
+                labelStartLocation.Text = labelStartLocation.Text +comboRack1End.Text;
             }
+            if (comboRack2Start.Text == "")
+            {
+                labelStartLocation.Text = labelStartLocation.Text + "- ";
+            }
+            else
+            {
+                labelStartLocation.Text = labelStartLocation.Text + "-" + comboRack2Start.Text;
+            }
+            if (comboRack2End.Text == "")
+            {
+                labelStartLocation.Text = labelStartLocation.Text + " ";
+            }
+            else
+            {
+                labelStartLocation.Text = labelStartLocation.Text + comboRack2End.Text;
+            }
+
             if (comboWarehouseName2.Text == "")
             {
                 MessageBox.Show("仓库名称不能为空！");
@@ -84,8 +114,8 @@ namespace HEGII_WHSS
                     daWHStartCode.Fill(dtWHStartCode);
                     if (dtWHStartCode.Rows.Count > 0)
                     {
-                        labelStartLocation.Text = dtWHStartCode.Rows[0]["WHStartCode"].ToString();
-                        labelEndLocation.Text = dtWHStartCode.Rows[0]["WHStartCode"].ToString();
+                        labelStartLocation.Text = dtWHStartCode.Rows[0]["WHStartCode"].ToString() + "-" + labelStartLocation.Text;
+                        labelEndLocation.Text = dtWHStartCode.Rows[0]["WHStartCode"].ToString() + "-" + labelStartLocation.Text;
                     }
                 }
                 catch (Exception msg)
@@ -97,7 +127,7 @@ namespace HEGII_WHSS
 
         private void comboWarehouseName2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            LocationChange();
         }
     }
 }
