@@ -64,41 +64,125 @@ namespace HEGII_WHSS
             LocationChange();
         }
 
+        private void comboLocation1Start_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LocationChange();
+        }
+
+        private void comboLocation1End_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LocationChange();
+        }
+
+        private void comboLocation2Start_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LocationChange();
+        }
+
+        private void comboLocation2End_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LocationChange();
+        }
+
+        private void buttonLocationAdd_Click(object sender, EventArgs e)
+        {
+            int intNewLocationNum = (Convert.ToChar(comboRack1End.Text) - Convert.ToChar(comboRack1Start.Text) + 1) *
+                                    (Convert.ToInt32(comboRack2End.Text) - Convert.ToInt32(comboRack2Start.Text) + 1) *
+                                    (Convert.ToChar(comboLocation1End.Text) - Convert.ToChar(comboLocation1Start.Text) + 1) *
+                                    (Convert.ToInt32(comboLocation2End.Text) - Convert.ToInt32(comboLocation2Start.Text) + 1);
+            if (intNewLocationNum > 0)
+            {
+                DialogResult resultLocationAdd = MessageBox.Show("是否确认添加" + labelStartLocation.Text + "到" + 
+                                                    labelEndLocation.Text + "共计" + intNewLocationNum.ToString() + "个货位?", 
+                                                    "添加货位",MessageBoxButtons.YesNo);
+                if (resultLocationAdd == DialogResult.Yes)
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("起始货位必须小于结束货位，请核对后再提交！");
+            }
+        }
+
+        private void comboWarehouseName2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LocationChange();
+        }
+
         private void LocationChange()
         {
             dtWHStartCode = new DataTable();
+            labelStartLocation.Text = "";
+            labelEndLocation.Text = "";
 
             if (comboRack1Start.Text == "")
             {
-                labelStartLocation.Text = " ";
-            }
-            else
-            {
-                labelStartLocation.Text = comboRack1Start.Text;
-            }
-            if (comboRack1End.Text == "")
-            {
                 labelStartLocation.Text = labelStartLocation.Text + " ";
             }
             else
             {
-                labelStartLocation.Text = labelStartLocation.Text +comboRack1End.Text;
+                labelStartLocation.Text = labelStartLocation.Text+ "" + comboRack1Start.Text;
             }
             if (comboRack2Start.Text == "")
             {
-                labelStartLocation.Text = labelStartLocation.Text + "- ";
+                labelStartLocation.Text = labelStartLocation.Text + " ";
             }
             else
             {
-                labelStartLocation.Text = labelStartLocation.Text + "-" + comboRack2Start.Text;
+                labelStartLocation.Text = labelStartLocation.Text + comboRack2Start.Text;
             }
-            if (comboRack2End.Text == "")
+
+            if (comboLocation1Start.Text == "")
             {
                 labelStartLocation.Text = labelStartLocation.Text + " ";
             }
             else
             {
-                labelStartLocation.Text = labelStartLocation.Text + comboRack2End.Text;
+                labelStartLocation.Text = labelStartLocation.Text + "" + comboLocation1Start.Text;
+            }
+            if (comboLocation2Start.Text == "")
+            {
+                labelStartLocation.Text = labelStartLocation.Text + " ";
+            }
+            else
+            {
+                labelStartLocation.Text = labelStartLocation.Text + comboLocation2Start.Text;
+            }
+
+            if (comboRack1End.Text == "")
+            {
+                labelEndLocation.Text = labelEndLocation.Text + " ";
+            }
+            else
+            {
+                labelEndLocation.Text = labelEndLocation.Text + "" + comboRack1End.Text;
+            }
+            if (comboRack2End.Text == "")
+            {
+                labelEndLocation.Text = labelEndLocation.Text + " ";
+            }
+            else
+            {
+                labelEndLocation.Text = labelEndLocation.Text + comboRack2End.Text;
+            }
+
+            if (comboLocation1End.Text == "")
+            {
+                labelEndLocation.Text = labelEndLocation.Text + " ";
+            }
+            else
+            {
+                labelEndLocation.Text = labelEndLocation.Text + "" + comboLocation1End.Text;
+            }
+            if (comboLocation2End.Text == "")
+            {
+                labelEndLocation.Text = labelEndLocation.Text + " ";
+            }
+            else
+            {
+                labelEndLocation.Text = labelEndLocation.Text + comboLocation2End.Text;
             }
 
             if (comboWarehouseName2.Text == "")
@@ -114,8 +198,8 @@ namespace HEGII_WHSS
                     daWHStartCode.Fill(dtWHStartCode);
                     if (dtWHStartCode.Rows.Count > 0)
                     {
-                        labelStartLocation.Text = dtWHStartCode.Rows[0]["WHStartCode"].ToString() + "-" + labelStartLocation.Text;
-                        labelEndLocation.Text = dtWHStartCode.Rows[0]["WHStartCode"].ToString() + "-" + labelStartLocation.Text;
+                        labelStartLocation.Text = dtWHStartCode.Rows[0]["WHStartCode"].ToString() + labelStartLocation.Text;
+                        labelEndLocation.Text = dtWHStartCode.Rows[0]["WHStartCode"].ToString() + labelEndLocation.Text;
                     }
                 }
                 catch (Exception msg)
@@ -125,9 +209,6 @@ namespace HEGII_WHSS
             }
         }
 
-        private void comboWarehouseName2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LocationChange();
-        }
+
     }
 }

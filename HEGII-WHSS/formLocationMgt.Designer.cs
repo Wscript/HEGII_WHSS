@@ -276,6 +276,7 @@
             this.comboLocation2End.Name = "comboLocation2End";
             this.comboLocation2End.Size = new System.Drawing.Size(43, 29);
             this.comboLocation2End.TabIndex = 33;
+            this.comboLocation2End.SelectedIndexChanged += new System.EventHandler(this.comboLocation2End_SelectedIndexChanged);
             // 
             // comboLocation2Start
             // 
@@ -296,6 +297,7 @@
             this.comboLocation2Start.Name = "comboLocation2Start";
             this.comboLocation2Start.Size = new System.Drawing.Size(43, 29);
             this.comboLocation2Start.TabIndex = 32;
+            this.comboLocation2Start.SelectedIndexChanged += new System.EventHandler(this.comboLocation2Start_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -343,6 +345,7 @@
             this.comboLocation1End.Name = "comboLocation1End";
             this.comboLocation1End.Size = new System.Drawing.Size(43, 29);
             this.comboLocation1End.TabIndex = 30;
+            this.comboLocation1End.SelectedIndexChanged += new System.EventHandler(this.comboLocation1End_SelectedIndexChanged);
             // 
             // comboLocation1Start
             // 
@@ -379,6 +382,7 @@
             this.comboLocation1Start.Name = "comboLocation1Start";
             this.comboLocation1Start.Size = new System.Drawing.Size(43, 29);
             this.comboLocation1Start.TabIndex = 29;
+            this.comboLocation1Start.SelectedIndexChanged += new System.EventHandler(this.comboLocation1Start_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -539,6 +543,7 @@
             this.buttonLocationAdd.TabIndex = 21;
             this.buttonLocationAdd.Text = "货位增加";
             this.buttonLocationAdd.UseVisualStyleBackColor = true;
+            this.buttonLocationAdd.Click += new System.EventHandler(this.buttonLocationAdd_Click);
             // 
             // comboWarehouseName2
             // 
