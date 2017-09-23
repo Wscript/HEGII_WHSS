@@ -30,11 +30,19 @@
         {
             this.groupLocationQuery = new System.Windows.Forms.GroupBox();
             this.comboWarehouseName1 = new System.Windows.Forms.ComboBox();
-            this.buttonQuery = new System.Windows.Forms.Button();
+            this.buttonLocationQuery = new System.Windows.Forms.Button();
             this.textLocationCode = new System.Windows.Forms.TextBox();
             this.labelLocationCode = new System.Windows.Forms.Label();
-            this.labelWarehouseName = new System.Windows.Forms.Label();
+            this.labelWarehouseName1 = new System.Windows.Forms.Label();
             this.groupLocationChange = new System.Windows.Forms.GroupBox();
+            this.textLocation2End = new System.Windows.Forms.TextBox();
+            this.textLocation2Start = new System.Windows.Forms.TextBox();
+            this.textLocation1End = new System.Windows.Forms.TextBox();
+            this.textLocation1Start = new System.Windows.Forms.TextBox();
+            this.textRack2End = new System.Windows.Forms.TextBox();
+            this.textRack2Start = new System.Windows.Forms.TextBox();
+            this.textRack1End = new System.Windows.Forms.TextBox();
+            this.textRack1Start = new System.Windows.Forms.TextBox();
             this.labelEndLocation = new System.Windows.Forms.Label();
             this.labelStartLocation = new System.Windows.Forms.Label();
             this.labelEndLocationLabel = new System.Windows.Forms.Label();
@@ -43,26 +51,18 @@
             this.labelLocation1 = new System.Windows.Forms.Label();
             this.labelRack2 = new System.Windows.Forms.Label();
             this.labelRack1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboLocation2End = new System.Windows.Forms.ComboBox();
-            this.comboLocation2Start = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboLocation1End = new System.Windows.Forms.ComboBox();
-            this.comboLocation1Start = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboRack2End = new System.Windows.Forms.ComboBox();
-            this.comboRack2Start = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboRack1End = new System.Windows.Forms.ComboBox();
-            this.comboRack1Start = new System.Windows.Forms.ComboBox();
+            this.labelBarLocation2 = new System.Windows.Forms.Label();
+            this.labelBarLocation1 = new System.Windows.Forms.Label();
+            this.labelBarRack2 = new System.Windows.Forms.Label();
+            this.labelBarRack1 = new System.Windows.Forms.Label();
             this.buttonLocationDelete = new System.Windows.Forms.Button();
             this.buttonLocationAdd = new System.Windows.Forms.Button();
             this.comboWarehouseName2 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.labelWarehouseName2 = new System.Windows.Forms.Label();
+            this.dataGridLocationList = new System.Windows.Forms.DataGridView();
             this.groupLocationQuery.SuspendLayout();
             this.groupLocationChange.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridLocationList)).BeginInit();
             this.SuspendLayout();
             // 
             // groupLocationQuery
@@ -70,10 +70,10 @@
             this.groupLocationQuery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupLocationQuery.Controls.Add(this.comboWarehouseName1);
-            this.groupLocationQuery.Controls.Add(this.buttonQuery);
+            this.groupLocationQuery.Controls.Add(this.buttonLocationQuery);
             this.groupLocationQuery.Controls.Add(this.textLocationCode);
             this.groupLocationQuery.Controls.Add(this.labelLocationCode);
-            this.groupLocationQuery.Controls.Add(this.labelWarehouseName);
+            this.groupLocationQuery.Controls.Add(this.labelWarehouseName1);
             this.groupLocationQuery.Location = new System.Drawing.Point(14, 14);
             this.groupLocationQuery.Margin = new System.Windows.Forms.Padding(5);
             this.groupLocationQuery.Name = "groupLocationQuery";
@@ -92,16 +92,17 @@
             this.comboWarehouseName1.Size = new System.Drawing.Size(214, 29);
             this.comboWarehouseName1.TabIndex = 17;
             // 
-            // buttonQuery
+            // buttonLocationQuery
             // 
-            this.buttonQuery.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonQuery.Location = new System.Drawing.Point(650, 26);
-            this.buttonQuery.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
-            this.buttonQuery.Name = "buttonQuery";
-            this.buttonQuery.Size = new System.Drawing.Size(93, 35);
-            this.buttonQuery.TabIndex = 16;
-            this.buttonQuery.Text = "查询";
-            this.buttonQuery.UseVisualStyleBackColor = true;
+            this.buttonLocationQuery.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonLocationQuery.Location = new System.Drawing.Point(650, 26);
+            this.buttonLocationQuery.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
+            this.buttonLocationQuery.Name = "buttonLocationQuery";
+            this.buttonLocationQuery.Size = new System.Drawing.Size(93, 35);
+            this.buttonLocationQuery.TabIndex = 16;
+            this.buttonLocationQuery.Text = "查询";
+            this.buttonLocationQuery.UseVisualStyleBackColor = true;
+            this.buttonLocationQuery.Click += new System.EventHandler(this.buttonLocationQuery_Click);
             // 
             // textLocationCode
             // 
@@ -121,20 +122,28 @@
             this.labelLocationCode.TabIndex = 2;
             this.labelLocationCode.Text = "货位编码";
             // 
-            // labelWarehouseName
+            // labelWarehouseName1
             // 
-            this.labelWarehouseName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelWarehouseName.AutoSize = true;
-            this.labelWarehouseName.Location = new System.Drawing.Point(18, 33);
-            this.labelWarehouseName.Name = "labelWarehouseName";
-            this.labelWarehouseName.Size = new System.Drawing.Size(74, 21);
-            this.labelWarehouseName.TabIndex = 0;
-            this.labelWarehouseName.Text = "仓库名称";
+            this.labelWarehouseName1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelWarehouseName1.AutoSize = true;
+            this.labelWarehouseName1.Location = new System.Drawing.Point(18, 33);
+            this.labelWarehouseName1.Name = "labelWarehouseName1";
+            this.labelWarehouseName1.Size = new System.Drawing.Size(74, 21);
+            this.labelWarehouseName1.TabIndex = 0;
+            this.labelWarehouseName1.Text = "仓库名称";
             // 
             // groupLocationChange
             // 
             this.groupLocationChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupLocationChange.Controls.Add(this.textLocation2End);
+            this.groupLocationChange.Controls.Add(this.textLocation2Start);
+            this.groupLocationChange.Controls.Add(this.textLocation1End);
+            this.groupLocationChange.Controls.Add(this.textLocation1Start);
+            this.groupLocationChange.Controls.Add(this.textRack2End);
+            this.groupLocationChange.Controls.Add(this.textRack2Start);
+            this.groupLocationChange.Controls.Add(this.textRack1End);
+            this.groupLocationChange.Controls.Add(this.textRack1Start);
             this.groupLocationChange.Controls.Add(this.labelEndLocation);
             this.groupLocationChange.Controls.Add(this.labelStartLocation);
             this.groupLocationChange.Controls.Add(this.labelEndLocationLabel);
@@ -143,28 +152,116 @@
             this.groupLocationChange.Controls.Add(this.labelLocation1);
             this.groupLocationChange.Controls.Add(this.labelRack2);
             this.groupLocationChange.Controls.Add(this.labelRack1);
-            this.groupLocationChange.Controls.Add(this.label5);
-            this.groupLocationChange.Controls.Add(this.comboLocation2End);
-            this.groupLocationChange.Controls.Add(this.comboLocation2Start);
-            this.groupLocationChange.Controls.Add(this.label4);
-            this.groupLocationChange.Controls.Add(this.comboLocation1End);
-            this.groupLocationChange.Controls.Add(this.comboLocation1Start);
-            this.groupLocationChange.Controls.Add(this.label3);
-            this.groupLocationChange.Controls.Add(this.comboRack2End);
-            this.groupLocationChange.Controls.Add(this.comboRack2Start);
-            this.groupLocationChange.Controls.Add(this.label2);
-            this.groupLocationChange.Controls.Add(this.comboRack1End);
-            this.groupLocationChange.Controls.Add(this.comboRack1Start);
+            this.groupLocationChange.Controls.Add(this.labelBarLocation2);
+            this.groupLocationChange.Controls.Add(this.labelBarLocation1);
+            this.groupLocationChange.Controls.Add(this.labelBarRack2);
+            this.groupLocationChange.Controls.Add(this.labelBarRack1);
             this.groupLocationChange.Controls.Add(this.buttonLocationDelete);
             this.groupLocationChange.Controls.Add(this.buttonLocationAdd);
             this.groupLocationChange.Controls.Add(this.comboWarehouseName2);
-            this.groupLocationChange.Controls.Add(this.label1);
+            this.groupLocationChange.Controls.Add(this.labelWarehouseName2);
             this.groupLocationChange.Location = new System.Drawing.Point(16, 414);
             this.groupLocationChange.Name = "groupLocationChange";
             this.groupLocationChange.Size = new System.Drawing.Size(779, 148);
             this.groupLocationChange.TabIndex = 2;
             this.groupLocationChange.TabStop = false;
             this.groupLocationChange.Text = "货位增加/删除";
+            // 
+            // textLocation2End
+            // 
+            this.textLocation2End.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textLocation2End.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textLocation2End.Location = new System.Drawing.Point(392, 104);
+            this.textLocation2End.MaxLength = 1;
+            this.textLocation2End.Name = "textLocation2End";
+            this.textLocation2End.Size = new System.Drawing.Size(42, 29);
+            this.textLocation2End.TabIndex = 50;
+            this.textLocation2End.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textLocation2End.TextChanged += new System.EventHandler(this.textLocation2End_TextChanged);
+            // 
+            // textLocation2Start
+            // 
+            this.textLocation2Start.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textLocation2Start.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textLocation2Start.Location = new System.Drawing.Point(321, 104);
+            this.textLocation2Start.MaxLength = 1;
+            this.textLocation2Start.Name = "textLocation2Start";
+            this.textLocation2Start.Size = new System.Drawing.Size(42, 29);
+            this.textLocation2Start.TabIndex = 49;
+            this.textLocation2Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textLocation2Start.TextChanged += new System.EventHandler(this.textLocation2Start_TextChanged);
+            // 
+            // textLocation1End
+            // 
+            this.textLocation1End.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textLocation1End.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textLocation1End.Location = new System.Drawing.Point(167, 104);
+            this.textLocation1End.MaxLength = 1;
+            this.textLocation1End.Name = "textLocation1End";
+            this.textLocation1End.Size = new System.Drawing.Size(42, 29);
+            this.textLocation1End.TabIndex = 48;
+            this.textLocation1End.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textLocation1End.TextChanged += new System.EventHandler(this.textLocation1End_TextChanged);
+            // 
+            // textLocation1Start
+            // 
+            this.textLocation1Start.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textLocation1Start.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textLocation1Start.Location = new System.Drawing.Point(96, 104);
+            this.textLocation1Start.MaxLength = 1;
+            this.textLocation1Start.Name = "textLocation1Start";
+            this.textLocation1Start.Size = new System.Drawing.Size(42, 29);
+            this.textLocation1Start.TabIndex = 47;
+            this.textLocation1Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textLocation1Start.TextChanged += new System.EventHandler(this.textLocation1Start_TextChanged);
+            // 
+            // textRack2End
+            // 
+            this.textRack2End.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textRack2End.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textRack2End.Location = new System.Drawing.Point(392, 67);
+            this.textRack2End.MaxLength = 1;
+            this.textRack2End.Name = "textRack2End";
+            this.textRack2End.Size = new System.Drawing.Size(42, 29);
+            this.textRack2End.TabIndex = 46;
+            this.textRack2End.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textRack2End.TextChanged += new System.EventHandler(this.textRack2End_TextChanged);
+            // 
+            // textRack2Start
+            // 
+            this.textRack2Start.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textRack2Start.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textRack2Start.Location = new System.Drawing.Point(321, 67);
+            this.textRack2Start.MaxLength = 1;
+            this.textRack2Start.Name = "textRack2Start";
+            this.textRack2Start.Size = new System.Drawing.Size(42, 29);
+            this.textRack2Start.TabIndex = 45;
+            this.textRack2Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textRack2Start.TextChanged += new System.EventHandler(this.textRack2Start_TextChanged);
+            // 
+            // textRack1End
+            // 
+            this.textRack1End.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textRack1End.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textRack1End.Location = new System.Drawing.Point(167, 69);
+            this.textRack1End.MaxLength = 1;
+            this.textRack1End.Name = "textRack1End";
+            this.textRack1End.Size = new System.Drawing.Size(42, 29);
+            this.textRack1End.TabIndex = 44;
+            this.textRack1End.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textRack1End.TextChanged += new System.EventHandler(this.textRack1End_TextChanged);
+            // 
+            // textRack1Start
+            // 
+            this.textRack1Start.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textRack1Start.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textRack1Start.Location = new System.Drawing.Point(96, 69);
+            this.textRack1Start.MaxLength = 1;
+            this.textRack1Start.Name = "textRack1Start";
+            this.textRack1Start.Size = new System.Drawing.Size(42, 29);
+            this.textRack1Start.TabIndex = 43;
+            this.textRack1Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textRack1Start.TextChanged += new System.EventHandler(this.textRack1Start_TextChanged);
             // 
             // labelEndLocation
             // 
@@ -246,281 +343,49 @@
             this.labelRack1.TabIndex = 35;
             this.labelRack1.Text = "货架号1";
             // 
-            // label5
+            // labelBarLocation2
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(369, 107);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 21);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "-";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelBarLocation2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelBarLocation2.AutoSize = true;
+            this.labelBarLocation2.Location = new System.Drawing.Point(369, 107);
+            this.labelBarLocation2.Name = "labelBarLocation2";
+            this.labelBarLocation2.Size = new System.Drawing.Size(17, 21);
+            this.labelBarLocation2.TabIndex = 34;
+            this.labelBarLocation2.Text = "-";
+            this.labelBarLocation2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboLocation2End
+            // labelBarLocation1
             // 
-            this.comboLocation2End.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboLocation2End.FormattingEnabled = true;
-            this.comboLocation2End.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9"});
-            this.comboLocation2End.Location = new System.Drawing.Point(392, 103);
-            this.comboLocation2End.Name = "comboLocation2End";
-            this.comboLocation2End.Size = new System.Drawing.Size(43, 29);
-            this.comboLocation2End.TabIndex = 33;
-            this.comboLocation2End.SelectedIndexChanged += new System.EventHandler(this.comboLocation2End_SelectedIndexChanged);
+            this.labelBarLocation1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelBarLocation1.AutoSize = true;
+            this.labelBarLocation1.Location = new System.Drawing.Point(144, 107);
+            this.labelBarLocation1.Name = "labelBarLocation1";
+            this.labelBarLocation1.Size = new System.Drawing.Size(17, 21);
+            this.labelBarLocation1.TabIndex = 31;
+            this.labelBarLocation1.Text = "-";
+            this.labelBarLocation1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboLocation2Start
+            // labelBarRack2
             // 
-            this.comboLocation2Start.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboLocation2Start.FormattingEnabled = true;
-            this.comboLocation2Start.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9"});
-            this.comboLocation2Start.Location = new System.Drawing.Point(320, 103);
-            this.comboLocation2Start.Name = "comboLocation2Start";
-            this.comboLocation2Start.Size = new System.Drawing.Size(43, 29);
-            this.comboLocation2Start.TabIndex = 32;
-            this.comboLocation2Start.SelectedIndexChanged += new System.EventHandler(this.comboLocation2Start_SelectedIndexChanged);
+            this.labelBarRack2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelBarRack2.AutoSize = true;
+            this.labelBarRack2.Location = new System.Drawing.Point(369, 70);
+            this.labelBarRack2.Name = "labelBarRack2";
+            this.labelBarRack2.Size = new System.Drawing.Size(17, 21);
+            this.labelBarRack2.TabIndex = 28;
+            this.labelBarRack2.Text = "-";
+            this.labelBarRack2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
+            // labelBarRack1
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(144, 107);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 21);
-            this.label4.TabIndex = 31;
-            this.label4.Text = "-";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboLocation1End
-            // 
-            this.comboLocation1End.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboLocation1End.FormattingEnabled = true;
-            this.comboLocation1End.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z"});
-            this.comboLocation1End.Location = new System.Drawing.Point(167, 103);
-            this.comboLocation1End.Name = "comboLocation1End";
-            this.comboLocation1End.Size = new System.Drawing.Size(43, 29);
-            this.comboLocation1End.TabIndex = 30;
-            this.comboLocation1End.SelectedIndexChanged += new System.EventHandler(this.comboLocation1End_SelectedIndexChanged);
-            // 
-            // comboLocation1Start
-            // 
-            this.comboLocation1Start.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboLocation1Start.FormattingEnabled = true;
-            this.comboLocation1Start.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z"});
-            this.comboLocation1Start.Location = new System.Drawing.Point(95, 103);
-            this.comboLocation1Start.Name = "comboLocation1Start";
-            this.comboLocation1Start.Size = new System.Drawing.Size(43, 29);
-            this.comboLocation1Start.TabIndex = 29;
-            this.comboLocation1Start.SelectedIndexChanged += new System.EventHandler(this.comboLocation1Start_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(369, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 21);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "-";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboRack2End
-            // 
-            this.comboRack2End.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboRack2End.FormattingEnabled = true;
-            this.comboRack2End.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9"});
-            this.comboRack2End.Location = new System.Drawing.Point(392, 66);
-            this.comboRack2End.Name = "comboRack2End";
-            this.comboRack2End.Size = new System.Drawing.Size(43, 29);
-            this.comboRack2End.TabIndex = 27;
-            this.comboRack2End.SelectedIndexChanged += new System.EventHandler(this.comboRack2End_SelectedIndexChanged);
-            // 
-            // comboRack2Start
-            // 
-            this.comboRack2Start.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboRack2Start.FormattingEnabled = true;
-            this.comboRack2Start.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9"});
-            this.comboRack2Start.Location = new System.Drawing.Point(320, 66);
-            this.comboRack2Start.Name = "comboRack2Start";
-            this.comboRack2Start.Size = new System.Drawing.Size(43, 29);
-            this.comboRack2Start.TabIndex = 26;
-            this.comboRack2Start.SelectedIndexChanged += new System.EventHandler(this.comboRack2Start_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(144, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 21);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "-";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboRack1End
-            // 
-            this.comboRack1End.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboRack1End.FormattingEnabled = true;
-            this.comboRack1End.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z"});
-            this.comboRack1End.Location = new System.Drawing.Point(167, 66);
-            this.comboRack1End.Name = "comboRack1End";
-            this.comboRack1End.Size = new System.Drawing.Size(43, 29);
-            this.comboRack1End.TabIndex = 24;
-            this.comboRack1End.SelectedIndexChanged += new System.EventHandler(this.comboRack1End_SelectedIndexChanged);
-            // 
-            // comboRack1Start
-            // 
-            this.comboRack1Start.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboRack1Start.FormattingEnabled = true;
-            this.comboRack1Start.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z"});
-            this.comboRack1Start.Location = new System.Drawing.Point(95, 66);
-            this.comboRack1Start.Name = "comboRack1Start";
-            this.comboRack1Start.Size = new System.Drawing.Size(43, 29);
-            this.comboRack1Start.TabIndex = 23;
-            this.comboRack1Start.SelectedIndexChanged += new System.EventHandler(this.comboRack1Start_SelectedIndexChanged);
+            this.labelBarRack1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelBarRack1.AutoSize = true;
+            this.labelBarRack1.Location = new System.Drawing.Point(144, 70);
+            this.labelBarRack1.Name = "labelBarRack1";
+            this.labelBarRack1.Size = new System.Drawing.Size(17, 21);
+            this.labelBarRack1.TabIndex = 25;
+            this.labelBarRack1.Text = "-";
+            this.labelBarRack1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonLocationDelete
             // 
@@ -555,34 +420,34 @@
             this.comboWarehouseName2.TabIndex = 19;
             this.comboWarehouseName2.SelectedIndexChanged += new System.EventHandler(this.comboWarehouseName2_SelectedIndexChanged);
             // 
-            // label1
+            // labelWarehouseName2
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 21);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "仓库名称";
+            this.labelWarehouseName2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelWarehouseName2.AutoSize = true;
+            this.labelWarehouseName2.Location = new System.Drawing.Point(15, 33);
+            this.labelWarehouseName2.Name = "labelWarehouseName2";
+            this.labelWarehouseName2.Size = new System.Drawing.Size(74, 21);
+            this.labelWarehouseName2.TabIndex = 18;
+            this.labelWarehouseName2.Text = "仓库名称";
             // 
-            // dataGridView1
+            // dataGridLocationList
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridLocationList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 103);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(779, 305);
-            this.dataGridView1.TabIndex = 3;
+            this.dataGridLocationList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridLocationList.Location = new System.Drawing.Point(16, 103);
+            this.dataGridLocationList.Name = "dataGridLocationList";
+            this.dataGridLocationList.RowTemplate.Height = 23;
+            this.dataGridLocationList.Size = new System.Drawing.Size(779, 305);
+            this.dataGridLocationList.TabIndex = 3;
             // 
             // formLocationMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(807, 573);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridLocationList);
             this.Controls.Add(this.groupLocationChange);
             this.Controls.Add(this.groupLocationQuery);
             this.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -594,7 +459,7 @@
             this.groupLocationQuery.PerformLayout();
             this.groupLocationChange.ResumeLayout(false);
             this.groupLocationChange.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridLocationList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -602,36 +467,36 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupLocationQuery;
-        private System.Windows.Forms.Button buttonQuery;
+        private System.Windows.Forms.Button buttonLocationQuery;
         private System.Windows.Forms.TextBox textLocationCode;
         private System.Windows.Forms.Label labelLocationCode;
-        private System.Windows.Forms.Label labelWarehouseName;
+        private System.Windows.Forms.Label labelWarehouseName1;
         private System.Windows.Forms.GroupBox groupLocationChange;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridLocationList;
         private System.Windows.Forms.ComboBox comboWarehouseName1;
-        private System.Windows.Forms.ComboBox comboRack1Start;
         private System.Windows.Forms.Button buttonLocationDelete;
         private System.Windows.Forms.Button buttonLocationAdd;
         private System.Windows.Forms.ComboBox comboWarehouseName2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelWarehouseName2;
         private System.Windows.Forms.Label labelStartLocationLabel;
         private System.Windows.Forms.Label labelLocation2;
         private System.Windows.Forms.Label labelLocation1;
         private System.Windows.Forms.Label labelRack2;
         private System.Windows.Forms.Label labelRack1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboLocation2End;
-        private System.Windows.Forms.ComboBox comboLocation2Start;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboLocation1End;
-        private System.Windows.Forms.ComboBox comboLocation1Start;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboRack2End;
-        private System.Windows.Forms.ComboBox comboRack2Start;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboRack1End;
+        private System.Windows.Forms.Label labelBarLocation2;
+        private System.Windows.Forms.Label labelBarLocation1;
+        private System.Windows.Forms.Label labelBarRack2;
+        private System.Windows.Forms.Label labelBarRack1;
         private System.Windows.Forms.Label labelEndLocationLabel;
         private System.Windows.Forms.Label labelEndLocation;
         private System.Windows.Forms.Label labelStartLocation;
+        private System.Windows.Forms.TextBox textLocation2End;
+        private System.Windows.Forms.TextBox textLocation2Start;
+        private System.Windows.Forms.TextBox textLocation1End;
+        private System.Windows.Forms.TextBox textLocation1Start;
+        private System.Windows.Forms.TextBox textRack2End;
+        private System.Windows.Forms.TextBox textRack2Start;
+        private System.Windows.Forms.TextBox textRack1End;
+        private System.Windows.Forms.TextBox textRack1Start;
     }
 }
