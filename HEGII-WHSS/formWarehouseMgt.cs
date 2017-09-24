@@ -41,6 +41,8 @@ namespace HEGII_WHSS
             {
                 dtWarehouseQuery.Clear();
                 daWarehouseQuery.Fill(dtWarehouseQuery);
+                dataGridWarehouse.Rows.Clear();
+                dataGridWarehouse.Columns.Clear();
                 if (dtWarehouseQuery.Rows.Count > 0)
                 {
                     dataGridWarehouse.Rows.Clear();

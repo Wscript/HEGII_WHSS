@@ -69,3 +69,4 @@ D:\Visual Studio Projects\HEGII_WHSS\HEGII-WHSS\obj\Debug\HEGII-WHSS.csproj.Gene
 D:\Visual Studio Projects\HEGII_WHSS\HEGII-WHSS\obj\Debug\HEGII-WHSS.csproj.CoreCompileInputs.cache
 D:\Visual Studio Projects\HEGII_WHSS\HEGII-WHSS\obj\Debug\HEGII-WHSS.exe
 D:\Visual Studio Projects\HEGII_WHSS\HEGII-WHSS\obj\Debug\HEGII-WHSS.pdb
+D:\Visual Studio Projects\HEGII_WHSS\HEGII-WHSS\obj\Debug\HEGII_WHSS.formOrderInput.resources

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HEGII_WHSS
@@ -129,6 +122,13 @@ namespace HEGII_WHSS
             formLocationMgt formLocationMgt = new formLocationMgt();
             formLocationMgt.MdiParent = this;
             formLocationMgt.Show();
+        }
+
+        private void 服务订单手工添加ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formOrderInput formOrderInput = new formOrderInput();
+            formOrderInput.MdiParent = this;
+            formOrderInput.Show();
         }
     }
 }

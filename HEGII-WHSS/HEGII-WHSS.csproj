@@ -70,6 +70,12 @@
     <Compile Include="formMDIMain.Designer.cs">
       <DependentUpon>formMDIMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="formOrderInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOrderInput.Designer.cs">
+      <DependentUpon>formOrderInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="formOrderQuery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formMDIMain.resx">
       <DependentUpon>formMDIMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOrderInput.resx">
+      <DependentUpon>formOrderInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formOrderQuery.resx">
       <DependentUpon>formOrderQuery.cs</DependentUpon>

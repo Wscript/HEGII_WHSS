@@ -81,7 +81,7 @@
             this.groupLocationQuery.Size = new System.Drawing.Size(779, 77);
             this.groupLocationQuery.TabIndex = 1;
             this.groupLocationQuery.TabStop = false;
-            this.groupLocationQuery.Text = "仓库查询";
+            this.groupLocationQuery.Text = "货位查询";
             // 
             // comboWarehouseName1
             // 
@@ -195,7 +195,7 @@
             // 
             this.textLocation1End.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textLocation1End.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textLocation1End.Location = new System.Drawing.Point(167, 104);
+            this.textLocation1End.Location = new System.Drawing.Point(392, 69);
             this.textLocation1End.MaxLength = 1;
             this.textLocation1End.Name = "textLocation1End";
             this.textLocation1End.Size = new System.Drawing.Size(42, 29);
@@ -207,7 +207,7 @@
             // 
             this.textLocation1Start.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textLocation1Start.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textLocation1Start.Location = new System.Drawing.Point(96, 104);
+            this.textLocation1Start.Location = new System.Drawing.Point(321, 69);
             this.textLocation1Start.MaxLength = 1;
             this.textLocation1Start.Name = "textLocation1Start";
             this.textLocation1Start.Size = new System.Drawing.Size(42, 29);
@@ -219,7 +219,7 @@
             // 
             this.textRack2End.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textRack2End.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textRack2End.Location = new System.Drawing.Point(392, 67);
+            this.textRack2End.Location = new System.Drawing.Point(167, 104);
             this.textRack2End.MaxLength = 1;
             this.textRack2End.Name = "textRack2End";
             this.textRack2End.Size = new System.Drawing.Size(42, 29);
@@ -231,7 +231,7 @@
             // 
             this.textRack2Start.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textRack2Start.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textRack2Start.Location = new System.Drawing.Point(321, 67);
+            this.textRack2Start.Location = new System.Drawing.Point(96, 104);
             this.textRack2Start.MaxLength = 1;
             this.textRack2Start.Name = "textRack2Start";
             this.textRack2Start.Size = new System.Drawing.Size(42, 29);
@@ -317,7 +317,7 @@
             // 
             this.labelLocation1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelLocation1.AutoSize = true;
-            this.labelLocation1.Location = new System.Drawing.Point(15, 107);
+            this.labelLocation1.Location = new System.Drawing.Point(240, 72);
             this.labelLocation1.Name = "labelLocation1";
             this.labelLocation1.Size = new System.Drawing.Size(67, 21);
             this.labelLocation1.TabIndex = 37;
@@ -327,7 +327,7 @@
             // 
             this.labelRack2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelRack2.AutoSize = true;
-            this.labelRack2.Location = new System.Drawing.Point(243, 70);
+            this.labelRack2.Location = new System.Drawing.Point(18, 107);
             this.labelRack2.Name = "labelRack2";
             this.labelRack2.Size = new System.Drawing.Size(67, 21);
             this.labelRack2.TabIndex = 36;
@@ -358,7 +358,7 @@
             // 
             this.labelBarLocation1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelBarLocation1.AutoSize = true;
-            this.labelBarLocation1.Location = new System.Drawing.Point(144, 107);
+            this.labelBarLocation1.Location = new System.Drawing.Point(369, 72);
             this.labelBarLocation1.Name = "labelBarLocation1";
             this.labelBarLocation1.Size = new System.Drawing.Size(17, 21);
             this.labelBarLocation1.TabIndex = 31;
@@ -369,7 +369,7 @@
             // 
             this.labelBarRack2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelBarRack2.AutoSize = true;
-            this.labelBarRack2.Location = new System.Drawing.Point(369, 70);
+            this.labelBarRack2.Location = new System.Drawing.Point(144, 107);
             this.labelBarRack2.Name = "labelBarRack2";
             this.labelBarRack2.Size = new System.Drawing.Size(17, 21);
             this.labelBarRack2.TabIndex = 28;
@@ -397,6 +397,7 @@
             this.buttonLocationDelete.TabIndex = 22;
             this.buttonLocationDelete.Text = "货位删除";
             this.buttonLocationDelete.UseVisualStyleBackColor = true;
+            this.buttonLocationDelete.Click += new System.EventHandler(this.buttonLocationDelete_Click);
             // 
             // buttonLocationAdd
             // 
@@ -454,6 +455,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "formLocationMgt";
             this.Text = "货位管理";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formLocationMgt_FormClosing);
             this.Load += new System.EventHandler(this.formLocationMgt_Load);
             this.groupLocationQuery.ResumeLayout(false);
             this.groupLocationQuery.PerformLayout();
