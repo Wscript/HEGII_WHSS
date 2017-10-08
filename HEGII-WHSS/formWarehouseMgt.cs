@@ -45,7 +45,6 @@ namespace HEGII_WHSS
                 dataGridWarehouse.Columns.Clear();
                 if (dtWarehouseQuery.Rows.Count > 0)
                 {
-                    dataGridWarehouse.Rows.Clear();
                     dataGridWarehouse.ColumnCount = dtWarehouseQuery.Columns.Count;
                     for (int i = 0; i < dtWarehouseQuery.Columns.Count; i++)
                     {

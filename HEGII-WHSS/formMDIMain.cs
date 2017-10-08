@@ -124,11 +124,18 @@ namespace HEGII_WHSS
             formLocationMgt.Show();
         }
 
-        private void 服务订单手工添加ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MenuItemOrderInput_Click(object sender, EventArgs e)
         {
             formOrderInput formOrderInput = new formOrderInput();
             formOrderInput.MdiParent = this;
             formOrderInput.Show();
+        }
+
+        private void MenuItemServiceDateConfirm_Click(object sender, EventArgs e)
+        {
+            formServiceDateConfirm formServiceDateConfirm = new formServiceDateConfirm();
+            formServiceDateConfirm.MdiParent = this;
+            formServiceDateConfirm.Show();
         }
     }
 }

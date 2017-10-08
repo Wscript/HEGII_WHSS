@@ -212,7 +212,7 @@
             this.groupOrderQuery.Size = new System.Drawing.Size(794, 157);
             this.groupOrderQuery.TabIndex = 4;
             this.groupOrderQuery.TabStop = false;
-            this.groupOrderQuery.Text = "订单查询";
+            this.groupOrderQuery.Text = "服务单查询";
             // 
             // comboStoreList
             // 
