@@ -137,5 +137,15 @@ namespace HEGII_WHSS
             formServiceDateConfirm.MdiParent = this;
             formServiceDateConfirm.Show();
         }
+
+        private void statusStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void formMDIMain_Load(object sender, EventArgs e)
+        {
+            StatusLabelUserName.Text = Global.stringUserName;
+        }
     }
 }

@@ -28,83 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupConfirmInformation = new System.Windows.Forms.GroupBox();
+            this.dataGridWaitingConfirmOrder = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.labelWaitingConfirmOrder = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridWaitingConfirmOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox2
+            // groupConfirmInformation
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupConfirmInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 486);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(795, 100);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupConfirmInformation.Location = new System.Drawing.Point(599, 12);
+            this.groupConfirmInformation.Name = "groupConfirmInformation";
+            this.groupConfirmInformation.Size = new System.Drawing.Size(346, 504);
+            this.groupConfirmInformation.TabIndex = 1;
+            this.groupConfirmInformation.TabStop = false;
             // 
-            // dataGridView1
+            // dataGridWaitingConfirmOrder
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridWaitingConfirmOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 118);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(443, 362);
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridWaitingConfirmOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridWaitingConfirmOrder.Location = new System.Drawing.Point(12, 33);
+            this.dataGridWaitingConfirmOrder.Name = "dataGridWaitingConfirmOrder";
+            this.dataGridWaitingConfirmOrder.RowTemplate.Height = 23;
+            this.dataGridWaitingConfirmOrder.Size = new System.Drawing.Size(581, 483);
+            this.dataGridWaitingConfirmOrder.TabIndex = 2;
             // 
             // dataGridView2
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(461, 118);
+            this.dataGridView2.Location = new System.Drawing.Point(12, 522);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(346, 362);
+            this.dataGridView2.Size = new System.Drawing.Size(933, 229);
             this.dataGridView2.TabIndex = 3;
             // 
-            // groupBox1
+            // labelWaitingConfirmOrder
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(795, 100);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.labelWaitingConfirmOrder.AutoSize = true;
+            this.labelWaitingConfirmOrder.Location = new System.Drawing.Point(12, 9);
+            this.labelWaitingConfirmOrder.Name = "labelWaitingConfirmOrder";
+            this.labelWaitingConfirmOrder.Size = new System.Drawing.Size(106, 21);
+            this.labelWaitingConfirmOrder.TabIndex = 4;
+            this.labelWaitingConfirmOrder.Text = "待确认服务单";
             // 
             // formServiceDateConfirm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 598);
+            this.ClientSize = new System.Drawing.Size(957, 763);
+            this.Controls.Add(this.labelWaitingConfirmOrder);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.dataGridWaitingConfirmOrder);
+            this.Controls.Add(this.groupConfirmInformation);
             this.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "formServiceDateConfirm";
             this.Text = "服务日期确认";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridWaitingConfirmOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.GroupBox groupConfirmInformation;
+        private System.Windows.Forms.DataGridView dataGridWaitingConfirmOrder;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label labelWaitingConfirmOrder;
     }
 }
