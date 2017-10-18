@@ -35,6 +35,7 @@
             this.labelLocationCode = new System.Windows.Forms.Label();
             this.labelWarehouseName1 = new System.Windows.Forms.Label();
             this.groupLocationChange = new System.Windows.Forms.GroupBox();
+            this.labelWarehouseCode = new System.Windows.Forms.Label();
             this.textLocation2End = new System.Windows.Forms.TextBox();
             this.textLocation2Start = new System.Windows.Forms.TextBox();
             this.textLocation1End = new System.Windows.Forms.TextBox();
@@ -136,6 +137,7 @@
             // 
             this.groupLocationChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupLocationChange.Controls.Add(this.labelWarehouseCode);
             this.groupLocationChange.Controls.Add(this.textLocation2End);
             this.groupLocationChange.Controls.Add(this.textLocation2Start);
             this.groupLocationChange.Controls.Add(this.textLocation1End);
@@ -166,6 +168,16 @@
             this.groupLocationChange.TabIndex = 2;
             this.groupLocationChange.TabStop = false;
             this.groupLocationChange.Text = "货位增加/删除";
+            // 
+            // labelWarehouseCode
+            // 
+            this.labelWarehouseCode.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelWarehouseCode.AutoSize = true;
+            this.labelWarehouseCode.Location = new System.Drawing.Point(471, 33);
+            this.labelWarehouseCode.Name = "labelWarehouseCode";
+            this.labelWarehouseCode.Size = new System.Drawing.Size(0, 21);
+            this.labelWarehouseCode.TabIndex = 52;
+            this.labelWarehouseCode.Visible = false;
             // 
             // textLocation2End
             // 
@@ -500,5 +512,6 @@
         private System.Windows.Forms.TextBox textRack2Start;
         private System.Windows.Forms.TextBox textRack1End;
         private System.Windows.Forms.TextBox textRack1Start;
+        private System.Windows.Forms.Label labelWarehouseCode;
     }
 }

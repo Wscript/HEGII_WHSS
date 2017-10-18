@@ -91,6 +91,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "formServiceDateConfirm";
             this.Text = "服务日期确认";
+            this.Load += new System.EventHandler(this.formServiceDateConfirm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridWaitingConfirmOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);

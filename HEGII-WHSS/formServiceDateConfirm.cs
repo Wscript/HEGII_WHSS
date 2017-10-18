@@ -16,5 +16,11 @@ namespace HEGII_WHSS
         {
             InitializeComponent();
         }
+
+        private void formServiceDateConfirm_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+
+        }
     }
 }

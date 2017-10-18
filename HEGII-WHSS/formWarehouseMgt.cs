@@ -8,9 +8,7 @@ namespace HEGII_WHSS
 {
     public partial class formWarehouseMgt : Form
     {
-        private DataTable dtWarehouseQuery,dtWarehouseChange, dtUsedLocation;
         private SqlConnection conWarehouseMgt;
-        private SqlDataAdapter daWarehouseQuery,daWarehouseChange, daUsedLocation;
         private int intNewRowIndex = -1, intChangeRowIndex = -1;
         private int intIDColumn, intIsAvailableColmun;
         private string sqlWarehouseChange,sqlUsedLocation;
@@ -34,36 +32,28 @@ namespace HEGII_WHSS
 
         private void buttonQuery_Click(object sender, EventArgs e)
         {
-            dtWarehouseQuery = new DataTable();
+            DataTable dtWarehouseQuery = new DataTable();
             string sqlWarehouseQuery = getSQLWarehouseQuery();
-            daWarehouseQuery = new SqlDataAdapter(sqlWarehouseQuery, conWarehouseMgt);
+            SqlDataAdapter daWarehouseQuery = new SqlDataAdapter(sqlWarehouseQuery, conWarehouseMgt);
             try
             {
                 dtWarehouseQuery.Clear();
                 daWarehouseQuery.Fill(dtWarehouseQuery);
+                Global.ExecutionLog("formWarehouseMgt", "buttonQuery_Click", sqlWarehouseQuery);
                 dataGridWarehouse.Rows.Clear();
                 dataGridWarehouse.Columns.Clear();
                 if (dtWarehouseQuery.Rows.Count > 0)
                 {
-                    dataGridWarehouse.ColumnCount = dtWarehouseQuery.Columns.Count;
-                    for (int i = 0; i < dtWarehouseQuery.Columns.Count; i++)
+                    Global.DataGridFill(dataGridWarehouse, dtWarehouseQuery);
+                    for (int i = 0; i < dataGridWarehouse.ColumnCount ; i++)
                     {
-                        dataGridWarehouse.Columns[i].Name = dtWarehouseQuery.Columns[i].Caption;
-                        if (dtWarehouseQuery.Columns[i].Caption == "序号")
+                        if (dataGridWarehouse.Columns[i].Name == "序号")
                         {
                             intIDColumn = i;
                         }
-                        if (dtWarehouseQuery.Columns[i].Caption == "是否可用")
+                        if (dataGridWarehouse.Columns[i].Name == "是否可用")
                         {
                             intIsAvailableColmun = i;
-                        }
-                    }
-                    for (int i = 0; i < dtWarehouseQuery.Rows.Count; i++)
-                    {
-                        dataGridWarehouse.Rows.Add();
-                        for (int j = 0; j < dtWarehouseQuery.Columns.Count; j++)
-                        {
-                            dataGridWarehouse.Rows[i].Cells[j].Value = dtWarehouseQuery.Rows[i][j];
                         }
                     }
                     dataGridWarehouse.ReadOnly = true;
@@ -82,7 +72,13 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formWarehouseMgt", "buttonQuery_Click", sqlWarehouseQuery, msg.Message);
                 MessageBox.Show(msg.Message);
+            }
+            finally
+            {
+                dtWarehouseQuery.Dispose();
+                daWarehouseQuery.Dispose();
             }
         }
 
@@ -101,7 +97,6 @@ namespace HEGII_WHSS
             {
                 MessageBox.Show("当前的修改尚未保存，无法新增仓库！");
             }
-
         }
 
         private void buttonChangeSave_Click(object sender, EventArgs e)
@@ -112,7 +107,7 @@ namespace HEGII_WHSS
             }
             else
             {
-                dtWarehouseChange = new DataTable();
+                DataTable dtWarehouseChange = new DataTable();
                 if (intChangeRowIndex >= 0)
                 {
                     sqlWarehouseChange = getSQLUpdate();
@@ -121,10 +116,11 @@ namespace HEGII_WHSS
                 {
                     sqlWarehouseChange = getSQLInsert();
                 }
-                daWarehouseChange = new SqlDataAdapter(sqlWarehouseChange,conWarehouseMgt);
+                SqlDataAdapter daWarehouseChange = new SqlDataAdapter(sqlWarehouseChange,conWarehouseMgt);
                 try
                 {
                     daWarehouseChange.Fill(dtWarehouseChange);
+                    Global.ExecutionLog("formWarehouseMgt", "buttonChangeSave_Click", sqlWarehouseChange);
                     if (dtWarehouseChange.Rows.Count > 0)
                     {
                         buttonQuery.PerformClick();
@@ -136,7 +132,13 @@ namespace HEGII_WHSS
                 }
                 catch (Exception msg)
                 {
+                    Global.ExceptionLog("formWarehouseMgt", "buttonChangeSave_Click", sqlWarehouseChange, msg.Message);
                     MessageBox.Show(msg.Message);
+                }
+                finally
+                {
+                    dtWarehouseChange.Dispose();
+                    daWarehouseChange.Dispose();
                 }
             }
         }
@@ -147,14 +149,15 @@ namespace HEGII_WHSS
             {
                 if (dataGridWarehouse.SelectedRows.Count > 0)
                 {
-                    dtUsedLocation = new DataTable();
+                    DataTable dtUsedLocation = new DataTable();
                     for (int i = 0; i < dataGridWarehouse.SelectedRows.Count; i++)
                     {
                         sqlUsedLocation = "EXEC progGetUsedLocation " + dataGridWarehouse.SelectedRows[i].Cells[intIDColumn].Value.ToString();
-                        daUsedLocation = new SqlDataAdapter(sqlUsedLocation,conWarehouseMgt);
+                        SqlDataAdapter daUsedLocation = new SqlDataAdapter(sqlUsedLocation,conWarehouseMgt);
                         try
                         {
                             daUsedLocation.Fill(dtUsedLocation);
+                            Global.ExecutionLog("formWarehouseMgt", "buttonWarehouseDisable_Click", sqlUsedLocation);
                             if (dtUsedLocation.Rows.Count >0)
                             {
                                 MessageBox.Show("仓库还有" + dtUsedLocation.Rows.Count.ToString() +"个型号的产品没有清空，请清空后再禁用！");
@@ -175,13 +178,13 @@ namespace HEGII_WHSS
                         }
                         catch (Exception msg)
                         {
+                            Global.ExceptionLog("formWarehouseMgt", "buttonWarehouseDisable_Click", sqlUsedLocation, msg.Message);
                             MessageBox.Show(msg.Message);
                         }
                         finally
                         {
-                            sqlUsedLocation = null;
-                            daUsedLocation = null;
-                            dtUsedLocation.Rows.Clear();
+                            dtUsedLocation.Dispose();
+                            daUsedLocation.Dispose();
                         }
                     }
                 }
@@ -210,14 +213,6 @@ namespace HEGII_WHSS
 
         private void formWerahouseMgt_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (dtWarehouseQuery != null)
-            {
-                dtWarehouseQuery.Dispose();
-            }
-            if (daWarehouseQuery != null)
-            {
-                daWarehouseQuery.Dispose();
-            }
             if (conWarehouseMgt != null)
             {
                 conWarehouseMgt.Close();

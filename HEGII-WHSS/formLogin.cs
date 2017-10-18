@@ -8,10 +8,6 @@ namespace HEGII_WHSS
 {
     public partial class formLogin : Form
     {
-        private DataTable dtLogin;
-        private SqlConnection conLogin;
-        private SqlDataAdapter daLogin;
-
         public formLogin()
         {
             InitializeComponent();
@@ -25,11 +21,11 @@ namespace HEGII_WHSS
             }
             else
             {
-                dtLogin = new DataTable();
+                DataTable dtLogin = new DataTable();
                 string conSQLServer = ConfigurationManager.ConnectionStrings["HGWHConnectionString"].ToString() + ";Password=" + Global.stringSQLPassword + ";";
                 string sqlLogin = "SELECT * FROM UserList WHERE LoginID='" + textUsername.Text + "'";
-                conLogin = new SqlConnection(conSQLServer);
-                daLogin = new SqlDataAdapter(sqlLogin, conLogin);
+                SqlConnection conLogin = new SqlConnection(conSQLServer);
+                SqlDataAdapter daLogin = new SqlDataAdapter(sqlLogin, conLogin);
 
                 try
                 {
@@ -53,25 +49,17 @@ namespace HEGII_WHSS
                 }
                 catch (Exception msg)
                 {
+                    Global.ExceptionLog("formLogin", "buttonLogin_Click", sqlLogin, msg.Message);
                     MessageBox.Show(msg.Message);
                 }
-            }
-        }
-
-        private void formLogin_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (dtLogin != null)
-            {
-                dtLogin.Dispose();
-            }
-            if (daLogin != null)
-            {
-                daLogin.Dispose();
-            }
-            if (conLogin != null)
-            {
-                conLogin.Close();
-                conLogin.Dispose();
+                finally
+                {
+                    Global.ExecutionLog("formLogin", "buttonLogin_Click", sqlLogin);
+                    dtLogin.Dispose();
+                    daLogin.Dispose();
+                    conLogin.Close();
+                    conLogin.Dispose();
+                }
             }
         }
     }

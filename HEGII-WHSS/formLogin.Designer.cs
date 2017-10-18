@@ -107,7 +107,6 @@
             this.Name = "formLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户登录";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formLogin_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

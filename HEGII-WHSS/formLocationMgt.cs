@@ -8,9 +8,9 @@ namespace HEGII_WHSS
 {
     public partial class formLocationMgt : Form
     {
-        private DataTable dtWarehouseList, dtWHStartCode, dtAlphabetNum, dtLocationQuery;
         private SqlConnection conformLocationMgt;
-        private SqlDataAdapter daWarehouseList, daWHStartCode, daAlphabetNum, daLocationQuery;
+        private DataTable dtAlphabetNum;
+        private SqlDataAdapter daAlphabetNum;
 
         public formLocationMgt()
         {
@@ -21,18 +21,20 @@ namespace HEGII_WHSS
         {
             this.WindowState = FormWindowState.Maximized;
 
-            dtWarehouseList = new DataTable();
+            DataTable dtWarehouseList = new DataTable();
             dtAlphabetNum = new DataTable();
             string conSQLServer = ConfigurationManager.ConnectionStrings["HGWHConnectionString"].ToString() + ";Password=" + Global.stringSQLPassword + ";";
             conformLocationMgt = new SqlConnection(conSQLServer);
             string sqlWarehouseList = "SELECT WarehouseName FROM WarehouseList WHERE IsAvailable = 1";
             string sqlAlphabetNum = "SELECT * FROM AlphabetNum";
-            daWarehouseList = new SqlDataAdapter(sqlWarehouseList, conformLocationMgt);
+            SqlDataAdapter daWarehouseList = new SqlDataAdapter(sqlWarehouseList, conformLocationMgt);
             daAlphabetNum = new SqlDataAdapter(sqlAlphabetNum, conformLocationMgt);
             try
             {
                 daAlphabetNum.Fill(dtAlphabetNum);
+                Global.ExecutionLog("formLocationMgt", "formLocationMgt_Load", sqlAlphabetNum);
                 daWarehouseList.Fill(dtWarehouseList);
+                Global.ExecutionLog("formLocationMgt", "formLocationMgt_Load", sqlWarehouseList);
                 if (dtWarehouseList.Rows.Count > 0)
                 {
                     for (int i = 0; i < dtWarehouseList.Rows.Count; i++)
@@ -44,6 +46,7 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formLocationMgt", "formLocationMgt_Load", sqlAlphabetNum + "|" + sqlWarehouseList, msg.Message);
                 MessageBox.Show(msg.Message);
             }
         }
@@ -79,6 +82,7 @@ namespace HEGII_WHSS
                         try
                         {
                             daCheckLocation.Fill(dtCheckLocation);
+                            Global.ExecutionLog("formLocationMgt", "buttonLocationAdd_Click", sqlCheckLocation);
                             if (dtCheckLocation.Rows.Count > 0)
                             {
                                 MessageBox.Show("需要添加的货位与现有货位有重复，请核对后再提交！");
@@ -91,6 +95,7 @@ namespace HEGII_WHSS
                         }
                          catch (Exception msg)
                         {
+                            Global.ExceptionLog("formLocationMgt", "buttonLocationAdd_Click", sqlCheckLocation, msg.Message);
                             MessageBox.Show(msg.Message);
                         }
                         finally
@@ -142,6 +147,7 @@ namespace HEGII_WHSS
                         try
                         {
                             daCheckLocation.Fill(dtCheckLocation);
+                            Global.ExecutionLog("formLocationMgt", "buttonLocationDelete_Click", sqlCheckLocation);
                             if (dtCheckLocation.Rows.Count == intDelLocationNum & dtCheckLocation.Select("型号个数 NOT IS NULL").Length == 0)
                             {
                                 int intLocationDelQty = LocationDel();
@@ -154,6 +160,7 @@ namespace HEGII_WHSS
                         }
                         catch (Exception msg)
                         {
+                            Global.ExceptionLog("formLocationMgt", "buttonLocationDelete_Click", sqlCheckLocation, msg.Message);
                             MessageBox.Show(msg.Message);
                         }
                         finally
@@ -177,7 +184,7 @@ namespace HEGII_WHSS
 
         private void buttonLocationQuery_Click(object sender, EventArgs e)
         {
-            dtLocationQuery = new DataTable();
+            DataTable dtLocationQuery = new DataTable();
             string sqlLocationQuery = "EXEC progLocationQuery ";
             if (comboWarehouseName1.Text == "")
             {
@@ -195,32 +202,27 @@ namespace HEGII_WHSS
             {
                 sqlLocationQuery = sqlLocationQuery + ",'" + textLocationCode.Text + "'";
             }
-            daLocationQuery = new SqlDataAdapter(sqlLocationQuery, conformLocationMgt);
+            SqlDataAdapter daLocationQuery = new SqlDataAdapter(sqlLocationQuery, conformLocationMgt);
             try
             {
                 daLocationQuery.Fill(dtLocationQuery);
+                Global.ExecutionLog("formLocationMgt", "buttonLocationQuery_Click", sqlLocationQuery);
                 dataGridLocationList.Rows.Clear();
                 dataGridLocationList.Columns.Clear();
                 if (dtLocationQuery.Rows.Count > 0)
                 {
-                    dataGridLocationList.ColumnCount = dtLocationQuery.Columns.Count;
-                    for (int i = 0; i < dtLocationQuery.Columns.Count; i++)
-                    {
-                        dataGridLocationList.Columns[i].Name = dtLocationQuery.Columns[i].Caption;
-                    }
-                    for (int i = 0; i < dtLocationQuery.Rows.Count; i++)
-                    {
-                        dataGridLocationList.Rows.Add();
-                        for (int j = 0; j < dtLocationQuery.Columns.Count; j++)
-                        {
-                            dataGridLocationList.Rows[i].Cells[j].Value = dtLocationQuery.Rows[i][j];
-                        }
-                    }
+                    Global.DataGridFill(dataGridLocationList, dtLocationQuery);
                 }
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formLocationMgt", "buttonLocationQuery_Click", sqlLocationQuery, msg.Message);
                 MessageBox.Show(msg.Message);
+            }
+            finally
+            {
+                dtLocationQuery.Dispose();
+                daLocationQuery.Dispose();
             }
 
             dataGridLocationList.ReadOnly = true;
@@ -271,82 +273,37 @@ namespace HEGII_WHSS
 
         private void comboWarehouseName2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LocationChange();
+            DataTable dtWHStartCode = new DataTable();
+            string sqldtWHStartCode = "SELECT WHStartCode FROM WarehouseList WHERE WarehouseName = '" + comboWarehouseName2.Text + "'";
+            SqlDataAdapter daWHStartCode = new SqlDataAdapter(sqldtWHStartCode, conformLocationMgt);
+            try
+            {
+                daWHStartCode.Fill(dtWHStartCode);
+                Global.ExecutionLog("formLocationMgt", "LocationChange", sqldtWHStartCode);
+                if (dtWHStartCode.Rows.Count > 0)
+                {
+                    labelStartLocation.Text = labelWarehouseCode.Text + labelStartLocation.Text;
+                    labelEndLocation.Text = labelWarehouseCode.Text + labelEndLocation.Text;
+                    labelWarehouseCode.Text = dtWHStartCode.Rows[0]["WHStartCode"].ToString();
+                }
+            }
+            catch (Exception msg)
+            {
+                Global.ExceptionLog("formLocationMgt", "LocationChange", sqldtWHStartCode, msg.Message);
+                MessageBox.Show(msg.Message);
+            }
+            finally
+            {
+                dtWHStartCode.Dispose();
+                daWHStartCode.Dispose();
+                LocationChange();
+            }
         }
 
         private void LocationChange()
         {
-            dtWHStartCode = new DataTable();
             labelStartLocation.Text = "";
             labelEndLocation.Text = "";
-
-            if (textRack1Start.Text == "")
-            {
-                labelStartLocation.Text = labelStartLocation.Text + " ";
-            }
-            else
-            {
-                labelStartLocation.Text = labelStartLocation.Text+ "" + textRack1Start.Text;
-            }
-            if (textRack2Start.Text == "")
-            {
-                labelStartLocation.Text = labelStartLocation.Text + " ";
-            }
-            else
-            {
-                labelStartLocation.Text = labelStartLocation.Text + textRack2Start.Text;
-            }
-
-            if (textLocation1Start.Text == "")
-            {
-                labelStartLocation.Text = labelStartLocation.Text + " ";
-            }
-            else
-            {
-                labelStartLocation.Text = labelStartLocation.Text + "" + textLocation1Start.Text;
-            }
-            if (textLocation2Start.Text == "")
-            {
-                labelStartLocation.Text = labelStartLocation.Text + " ";
-            }
-            else
-            {
-                labelStartLocation.Text = labelStartLocation.Text + textLocation2Start.Text;
-            }
-
-            if (textRack1End.Text == "")
-            {
-                labelEndLocation.Text = labelEndLocation.Text + " ";
-            }
-            else
-            {
-                labelEndLocation.Text = labelEndLocation.Text + "" + textRack1End.Text;
-            }
-            if (textRack2End.Text == "")
-            {
-                labelEndLocation.Text = labelEndLocation.Text + " ";
-            }
-            else
-            {
-                labelEndLocation.Text = labelEndLocation.Text + textRack2End.Text;
-            }
-
-            if (textLocation1End.Text == "")
-            {
-                labelEndLocation.Text = labelEndLocation.Text + " ";
-            }
-            else
-            {
-                labelEndLocation.Text = labelEndLocation.Text + "" + textLocation1End.Text;
-            }
-            if (textLocation2End.Text == "")
-            {
-                labelEndLocation.Text = labelEndLocation.Text + " ";
-            }
-            else
-            {
-                labelEndLocation.Text = labelEndLocation.Text + textLocation2End.Text;
-            }
 
             if (comboWarehouseName2.Text == "")
             {
@@ -354,21 +311,75 @@ namespace HEGII_WHSS
             }
             else
             {
-                string sqldtWHStartCode = "SELECT WHStartCode FROM WarehouseList WHERE WarehouseName = '" + comboWarehouseName2.Text + "'";
-                daWHStartCode = new SqlDataAdapter(sqldtWHStartCode, conformLocationMgt);
-                try
+                if (textRack1Start.Text == "")
                 {
-                    daWHStartCode.Fill(dtWHStartCode);
-                    if (dtWHStartCode.Rows.Count > 0)
-                    {
-                        labelStartLocation.Text = dtWHStartCode.Rows[0]["WHStartCode"].ToString() + labelStartLocation.Text;
-                        labelEndLocation.Text = dtWHStartCode.Rows[0]["WHStartCode"].ToString() + labelEndLocation.Text;
-                    }
+                    labelStartLocation.Text = labelStartLocation.Text + " ";
                 }
-                catch (Exception msg)
+                else
                 {
-                    MessageBox.Show(msg.Message);
+                    labelStartLocation.Text = labelStartLocation.Text + "" + textRack1Start.Text;
                 }
+                if (textRack2Start.Text == "")
+                {
+                    labelStartLocation.Text = labelStartLocation.Text + " ";
+                }
+                else
+                {
+                    labelStartLocation.Text = labelStartLocation.Text + textRack2Start.Text;
+                }
+
+                if (textLocation1Start.Text == "")
+                {
+                    labelStartLocation.Text = labelStartLocation.Text + " ";
+                }
+                else
+                {
+                    labelStartLocation.Text = labelStartLocation.Text + "" + textLocation1Start.Text;
+                }
+                if (textLocation2Start.Text == "")
+                {
+                    labelStartLocation.Text = labelStartLocation.Text + " ";
+                }
+                else
+                {
+                    labelStartLocation.Text = labelStartLocation.Text + textLocation2Start.Text;
+                }
+
+                if (textRack1End.Text == "")
+                {
+                    labelEndLocation.Text = labelEndLocation.Text + " ";
+                }
+                else
+                {
+                    labelEndLocation.Text = labelEndLocation.Text + "" + textRack1End.Text;
+                }
+                if (textRack2End.Text == "")
+                {
+                    labelEndLocation.Text = labelEndLocation.Text + " ";
+                }
+                else
+                {
+                    labelEndLocation.Text = labelEndLocation.Text + textRack2End.Text;
+                }
+
+                if (textLocation1End.Text == "")
+                {
+                    labelEndLocation.Text = labelEndLocation.Text + " ";
+                }
+                else
+                {
+                    labelEndLocation.Text = labelEndLocation.Text + "" + textLocation1End.Text;
+                }
+                if (textLocation2End.Text == "")
+                {
+                    labelEndLocation.Text = labelEndLocation.Text + " ";
+                }
+                else
+                {
+                    labelEndLocation.Text = labelEndLocation.Text + textLocation2End.Text;
+                }
+                labelStartLocation.Text = labelWarehouseCode.Text + labelStartLocation.Text;
+                labelEndLocation.Text = labelWarehouseCode.Text + labelEndLocation.Text;
             }
         }
 
@@ -380,9 +391,11 @@ namespace HEGII_WHSS
             try
             {
                 daLocationAdd.Fill(dtLocationAdd);
+                Global.ExecutionLog("formLocationMgt", "LocationAdd", sqlLocationAdd);
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formLocationMgt", "LocationAdd", sqlLocationAdd, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally
@@ -402,9 +415,11 @@ namespace HEGII_WHSS
             try
             {
                 daLocationDel.Fill(dtLocationDel);
+                Global.ExecutionLog("formLocationMgt", "LocationDel", sqlLocationDel);
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formLocationMgt", "LocationDel", sqlLocationDel, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally
@@ -418,51 +433,16 @@ namespace HEGII_WHSS
 
         private void formLocationMgt_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (dtWarehouseList != null)
-            {
-                dtWarehouseList.Dispose();
-            }
-
-            if (dtWHStartCode != null)
-            {
-                dtWHStartCode.Dispose();
-            }
-
             if (dtAlphabetNum != null)
             {
                 dtAlphabetNum.Dispose();
             }
-
-            if (dtLocationQuery != null)
-            {
-                dtLocationQuery.Dispose();
-            }
-
-            if (daWarehouseList != null)
-            {
-                daWarehouseList.Dispose();
-            }
-
-            if (daWHStartCode != null)
-            {
-                daWHStartCode.Dispose();
-            }
-
-            if (daAlphabetNum != null)
+            if (daAlphabetNum  != null)
             {
                 daAlphabetNum.Dispose();
             }
-
-            if (daLocationQuery != null)
-            {
-                daLocationQuery.Dispose();
-            }
-
-            if (conformLocationMgt != null)
-            {
-                conformLocationMgt.Close();
-                conformLocationMgt.Dispose();
-            }
+            conformLocationMgt.Close();
+            conformLocationMgt.Dispose();
         }
     }
 }

@@ -40,6 +40,7 @@ namespace HEGII_WHSS
             try
             {
                 daApplyWayList.Fill(dtApplyWayList);
+                Global.ExecutionLog("formOrderInput","formOrderInput_Load", sqlApplyWayList);
                 if (dtApplyWayList.Rows.Count > 0)
                 {
                     for (int i = 0; i < dtApplyWayList.Rows.Count; i++)
@@ -49,6 +50,7 @@ namespace HEGII_WHSS
                 }
 
                 daOrderTypeList.Fill(dtOrderTypeList);
+                Global.ExecutionLog("formOrderInput", "formOrderInput_Load", sqlOrderTypeList);
                 if (dtOrderTypeList.Rows.Count > 0)
                 {
                     for (int i = 0; i < dtOrderTypeList.Rows.Count; i++)
@@ -58,6 +60,7 @@ namespace HEGII_WHSS
                 }
 
                 daSalesStoreCategory.Fill(dtSalesStoreCategory);
+                Global.ExecutionLog("formOrderInput", "formOrderInput_Load", sqlSalesStoreCategory);
                 if (dtSalesStoreCategory.Rows.Count > 0)
                 {
                     for (int i = 0; i < dtSalesStoreCategory.Rows.Count; i++)
@@ -67,6 +70,7 @@ namespace HEGII_WHSS
                 }
 
                 daServiceLocation.Fill(dtServiceLocation);
+                Global.ExecutionLog("formOrderInput", "formOrderInput_Load", sqlServiceLocation);
                 if (dtServiceLocation.Rows.Count > 0)
                 {
                     for (int i = 0; i < dtServiceLocation.Rows.Count; i++)
@@ -77,6 +81,10 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formOrderInput", 
+                                    "formOrderInput_Load", 
+                                    sqlOrderTypeList + "|" + sqlApplyWayList + "|" + sqlSalesStoreCategory + "|" + sqlServiceLocation, 
+                                    msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally
@@ -90,7 +98,6 @@ namespace HEGII_WHSS
                 daOrderTypeList.Dispose();
                 daSalesStoreCategory.Dispose();
                 daServiceLocation.Dispose();
-
             }
         }
 
@@ -106,6 +113,7 @@ namespace HEGII_WHSS
             try
             {
                 daSalesStoreList.Fill(dtSalesStoreList);
+                Global.ExecutionLog("formOrderInput", "comboSalesStoreType_SelectedIndexChanged", sqlSalesStoreList);
                 comboSalesStoreList.Items.Clear();
                 if (dtSalesStoreList.Rows.Count > 0)
                 {
@@ -117,6 +125,7 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formOrderInput", "comboSalesStoreType_SelectedIndexChanged", sqlSalesStoreList, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally
@@ -138,6 +147,7 @@ namespace HEGII_WHSS
             try
             {
                 daServiceLocation.Fill(dtServiceLocation);
+                Global.ExecutionLog("formOrderInput", "comboServiceLocation_SelectedIndexChanged", sqlServiceLocation);
                 comboServiceArea.Items.Clear();
                 if (dtServiceLocation.Rows.Count > 0)
                 {
@@ -149,6 +159,7 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formOrderInput", "comboServiceLocation_SelectedIndexChanged", sqlServiceLocation, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally
@@ -242,6 +253,7 @@ namespace HEGII_WHSS
             try
             {
                 daGetOrderInfo.Fill(dtGetOrderInfo);
+                Global.ExecutionLog("formOrderInput", "GetCustInfoID", sqlGetOrderInfo);
                 if (dtGetOrderInfo.Rows.Count > 0)
                 {
                     intCustInfoID = (int)dtGetOrderInfo.Rows[0][0];
@@ -249,6 +261,7 @@ namespace HEGII_WHSS
                 else
                 {
                     daInsertCustInfo.Fill(dtInsertCustInfo);
+                    Global.ExecutionLog("formOrderInput", "GetCustInfoID", sqlInsertCustInfo);
                     if (dtInsertCustInfo.Rows.Count > 0)
                     {
                         intCustInfoID = (int)dtInsertCustInfo.Rows[0][0];
@@ -257,6 +270,7 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formOrderInput", "GetCustInfoID", sqlGetOrderInfo + "|" + sqlInsertCustInfo, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally
@@ -366,6 +380,7 @@ namespace HEGII_WHSS
             try
             {
                 daGetOrder.Fill(dtGetOrder);
+                Global.ExecutionLog("formOrderInput", "InsertOrder", sqlGetOrder);
                 if (dtGetOrder.Rows.Count > 0)
                 {
                     intInsertOrderID = (int)dtGetOrder.Rows[0][0];
@@ -373,11 +388,13 @@ namespace HEGII_WHSS
                 else
                 {
                     daInsertOrder.Fill(dtInsertOrder);
+                    Global.ExecutionLog("formOrderInput", "InsertOrder", sqlInsertOrder);
                     intInsertOrderID = (int)dtInsertOrder.Rows[0][0];
                 }
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formOrderInput", "InsertOrder", sqlGetOrder + "|" + sqlInsertOrder, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally

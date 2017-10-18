@@ -8,8 +8,6 @@ namespace HEGII_WHSS
 {
     public partial class formOrderQuery : Form
     {
-        private DataTable dtStoreList, dtOrderQuery;
-        private SqlDataAdapter daStoreList, daOrderQuery;
         private SqlConnection conOrderQuery;
 
         public formOrderQuery()
@@ -33,6 +31,7 @@ namespace HEGII_WHSS
             try
             {
                 daEngineerList.Fill(dtEngineerList);
+                Global.ExecutionLog("formOrderQuery", "formOrderQuery_Load", sqlEngineerList);
                 if (dtEngineerList.Rows.Count > 0)
                 {
                     for (int i = 0; i < dtEngineerList.Rows.Count; i++)
@@ -41,6 +40,7 @@ namespace HEGII_WHSS
                     }
                 }
                 daSalesStoreCategory.Fill(dtStoreCategory);
+                Global.ExecutionLog("formOrderQuery", "formOrderQuery_Load", sqlSalesStoreCategory);
                 if (dtStoreCategory.Rows.Count > 0)
                 {
                     for (int i = 0; i < dtStoreCategory.Rows.Count; i++)
@@ -51,6 +51,7 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formOrderQuery", "formOrderQuery_Load", sqlEngineerList + "|" + sqlSalesStoreCategory, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally
@@ -73,23 +74,10 @@ namespace HEGII_WHSS
                 dataGridOrderList.Rows.Clear();
                 dataGridOrderList.Columns.Clear();
                 daOrderQuery.Fill(dtOrderQuery);
+                Global.ExecutionLog("formOrderQuery", "buttonQuery_Click", sqlOrderQuery);
                 if (dtOrderQuery.Rows.Count > 0)
                 {
-                    //dataGridOrderList.DataSource = dtOrderQuery;
-                    dataGridOrderList.ColumnCount = dtOrderQuery.Columns.Count;
-                    for (int i = 0; i < dtOrderQuery.Columns.Count; i++)
-                    {
-                        dataGridOrderList.Columns[i].Name = dtOrderQuery.Columns[i].Caption;
-                    }
-                    for (int i = 0; i < dtOrderQuery.Rows.Count; i++)
-                    {
-                        dataGridOrderList.Rows.Add();
-                        for (int j = 0; j < dtOrderQuery.Columns.Count; j++)
-                        {
-                            dataGridOrderList.Rows[i].Cells[j].Value = dtOrderQuery.Rows[i][j];
-                        }
-                    }
-
+                    Global.DataGridFill(dataGridOrderList, dtOrderQuery);
                     dataGridOrderList.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
                     dataGridOrderList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
                     dataGridOrderList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -104,6 +92,7 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formOrderQuery", "buttonQuery_Click", sqlOrderQuery, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally
@@ -125,6 +114,7 @@ namespace HEGII_WHSS
             try
             {
                 daStoreList.Fill(dtStoreList);
+                Global.ExecutionLog("formOrderQuery", "comboStoreCategory_SelectedIndexChanged", sqlStoreList);
                 comboStoreList.Items.Clear();
                 comboStoreList.Text = "";
                 if (dtStoreList.Rows.Count>0)
@@ -138,6 +128,7 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
+                Global.ExceptionLog("formOrderQuery", "comboStoreCategory_SelectedIndexChanged", sqlStoreList, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally
