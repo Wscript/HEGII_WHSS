@@ -81,10 +81,10 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
-                Global.ExceptionLog("formOrderInput", 
-                                    "formOrderInput_Load", 
-                                    sqlOrderTypeList + "|" + sqlApplyWayList + "|" + sqlSalesStoreCategory + "|" + sqlServiceLocation, 
-                                    msg.Message);
+                Global.ExceptionLog("formOrderInput", "formOrderInput_Load", sqlOrderTypeList, msg.Message);
+                Global.ExceptionLog("formOrderInput", "formOrderInput_Load", sqlApplyWayList, msg.Message);
+                Global.ExceptionLog("formOrderInput", "formOrderInput_Load", sqlSalesStoreCategory, msg.Message);
+                Global.ExceptionLog("formOrderInput", "formOrderInput_Load", sqlServiceLocation, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally
@@ -270,7 +270,8 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
-                Global.ExceptionLog("formOrderInput", "GetCustInfoID", sqlGetOrderInfo + "|" + sqlInsertCustInfo, msg.Message);
+                Global.ExceptionLog("formOrderInput", "GetCustInfoID", sqlGetOrderInfo, msg.Message);
+                Global.ExceptionLog("formOrderInput", "GetCustInfoID", sqlInsertCustInfo, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally
@@ -394,7 +395,8 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
-                Global.ExceptionLog("formOrderInput", "InsertOrder", sqlGetOrder + "|" + sqlInsertOrder, msg.Message);
+                Global.ExceptionLog("formOrderInput", "InsertOrder", sqlGetOrder, msg.Message);
+                Global.ExceptionLog("formOrderInput", "InsertOrder", sqlInsertOrder, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally

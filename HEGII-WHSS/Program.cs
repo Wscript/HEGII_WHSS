@@ -61,7 +61,7 @@ namespace HEGII_WHSS
             sqlCommandExecutionLog.Connection = conExecutionLog;
             SQLString = SQLString.Replace("'", "''");
             string sqlExecutionLog = String.Format("INSERT INTO ExecutionLog (UserName, ComputerName, FormName, ModuleName, SQLString, ExecutionTime) " +
-                                                   "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', GETDATE())",
+                                                   "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', GETDATE()+'08:00:00')",
                                                    Global.stringUserName,
                                                    Dns.GetHostName(),
                                                    FormName,
@@ -92,15 +92,15 @@ namespace HEGII_WHSS
             SqlCommand sqlCommandExceptionLog = new SqlCommand();
             sqlCommandExceptionLog.Connection = conExceptionLog;
             SQLString = SQLString.Replace("'", "''");
-            string sqlExecutionLog = String.Format("INSERT INTO ExecutionLog (UserName, ComputerName, FormName, ModuleName, SQLString, ExceptionMsg, ExecutionTime) " +
-                                                   "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', GETDATE())",
+            string sqlExceptionLog = String.Format("INSERT INTO ExceptionLog (UserName, ComputerName, FormName, ModuleName, SQLString, ExceptionMsg, ExceptionTime) " +
+                                                   "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', GETDATE()+'08:00:00')",
                                                    Global.stringUserName,
                                                    Dns.GetHostName(),
                                                    FormName,
                                                    ModuleName,
                                                    SQLString,
                                                    ExceptionMsg);
-            sqlCommandExceptionLog.CommandText = sqlExecutionLog;
+            sqlCommandExceptionLog.CommandText = sqlExceptionLog;
             try
             {
                 conExceptionLog.Open();

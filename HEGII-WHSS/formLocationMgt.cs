@@ -46,7 +46,8 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
-                Global.ExceptionLog("formLocationMgt", "formLocationMgt_Load", sqlAlphabetNum + "|" + sqlWarehouseList, msg.Message);
+                Global.ExceptionLog("formLocationMgt", "formLocationMgt_Load", sqlAlphabetNum, msg.Message);
+                Global.ExceptionLog("formLocationMgt", "formLocationMgt_Load", sqlWarehouseList, msg.Message);
                 MessageBox.Show(msg.Message);
             }
         }

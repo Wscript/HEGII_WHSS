@@ -51,7 +51,8 @@ namespace HEGII_WHSS
             }
             catch (Exception msg)
             {
-                Global.ExceptionLog("formOrderQuery", "formOrderQuery_Load", sqlEngineerList + "|" + sqlSalesStoreCategory, msg.Message);
+                Global.ExceptionLog("formOrderQuery", "formOrderQuery_Load", sqlEngineerList, msg.Message);
+                Global.ExceptionLog("formOrderQuery", "formOrderQuery_Load", sqlSalesStoreCategory, msg.Message);
                 MessageBox.Show(msg.Message);
             }
             finally
